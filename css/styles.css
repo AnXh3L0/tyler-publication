@@ -106,6 +106,49 @@ html.popup-scroll-lock body {
 html { scroll-behavior: smooth; overflow-x: hidden; }
 
 /* ============================================
+   Squarespace Font Overrides
+   ============================================ */
+#tyler-essay,
+#tyler-essay p,
+#tyler-essay span,
+#tyler-essay div,
+#tyler-essay figcaption,
+#tyler-essay cite,
+#tyler-essay footer,
+#tyler-essay a,
+#tyler-essay li,
+#tyler-essay label {
+    font-family: "Gotham", "Helvetica Neue", Arial, sans-serif !important;
+}
+
+#tyler-essay blockquote {
+    font-family: "Abril Text", Georgia, serif !important;
+    quotes: none !important;
+}
+
+#tyler-essay blockquote::before,
+#tyler-essay blockquote::after {
+    content: none !important;
+}
+
+#tyler-essay blockquote p,
+#tyler-essay .quote-text {
+    font-family: "Abril Text", Georgia, serif !important;
+}
+
+#tyler-essay .body-text,
+#tyler-essay .body-text p {
+    font-family: "Abril Text", Georgia, serif !important;
+}
+
+#tyler-essay h1,
+#tyler-essay h2,
+#tyler-essay h3,
+#tyler-essay h4 {
+    font-family: "Gotham", "Helvetica Neue", Arial, sans-serif !important;
+}
+
+/* ============================================
    Typography
    ============================================ */
 .heading-display {
