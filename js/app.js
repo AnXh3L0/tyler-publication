@@ -265,8 +265,15 @@ function protestEssay() {
             this.activeImage = image;
             this.activeHotspot = hotspot;
             this._savedScrollY = window.scrollY;
-            this._scrollGuard = () => window.scrollTo(0, this._savedScrollY);
-            window.addEventListener('scroll', this._scrollGuard);
+            this._lockingScroll = true;
+            const hold = () => {
+                if (!this._lockingScroll) return;
+                if (window.scrollY !== this._savedScrollY) {
+                    window.scrollTo(0, this._savedScrollY);
+                }
+                requestAnimationFrame(hold);
+            };
+            requestAnimationFrame(hold);
             this.popupOpen = true;
             this.$nextTick(() => {
                 requestAnimationFrame(() => { this.popupExpanded = true; });
@@ -280,13 +287,10 @@ function protestEssay() {
             }
             this.popupExpanded = false;
             setTimeout(() => {
+                this._lockingScroll = false;
                 this.popupOpen = false;
                 this.activeHotspot = null;
                 this.activeImage = null;
-                if (this._scrollGuard) {
-                    window.removeEventListener('scroll', this._scrollGuard);
-                    this._scrollGuard = null;
-                }
                 window.scrollTo(0, this._savedScrollY || 0);
                 if (this.previouslyFocused) {
                     this.previouslyFocused.focus();
