@@ -1,0 +1,286 @@
+@font-face {
+    font-family: 'Abril Display';
+    src: url('AbrilDisplay-Black.eot');
+    src: local('Abril Display Black'), local('AbrilDisplay-Black'),
+        url('AbrilDisplay-Black.eot?#iefix') format('embedded-opentype'),
+        url('AbrilDisplay-Black.woff2') format('woff2'),
+        url('AbrilDisplay-Black.woff') format('woff'),
+        url('AbrilDisplay-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Abril Display';
+    src: url('AbrilDisplay-BlackItalic.eot');
+    src: local('Abril Display Black Italic'), local('AbrilDisplay-BlackItalic'),
+        url('AbrilDisplay-BlackItalic.eot?#iefix') format('embedded-opentype'),
+        url('AbrilDisplay-BlackItalic.woff2') format('woff2'),
+        url('AbrilDisplay-BlackItalic.woff') format('woff'),
+        url('AbrilDisplay-BlackItalic.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Abril Display';
+    src: url('AbrilDisplay-BoldItalic.eot');
+    src: local('Abril Display Bold Italic'), local('AbrilDisplay-BoldItalic'),
+        url('AbrilDisplay-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('AbrilDisplay-BoldItalic.woff2') format('woff2'),
+        url('AbrilDisplay-BoldItalic.woff') format('woff'),
+        url('AbrilDisplay-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Abril Display';
+    src: url('AbrilDisplay-Bold.eot');
+    src: local('Abril Display Bold'), local('AbrilDisplay-Bold'),
+        url('AbrilDisplay-Bold.eot?#iefix') format('embedded-opentype'),
+        url('AbrilDisplay-Bold.woff2') format('woff2'),
+        url('AbrilDisplay-Bold.woff') format('woff'),
+        url('AbrilDisplay-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Abril Display';
+    src: url('AbrilDisplay-ExtraBold.eot');
+    src: local('Abril Display ExtraBold'), local('AbrilDisplay-ExtraBold'),
+        url('AbrilDisplay-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('AbrilDisplay-ExtraBold.woff2') format('woff2'),
+        url('AbrilDisplay-ExtraBold.woff') format('woff'),
+        url('AbrilDisplay-ExtraBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Abril Display';
+    src: url('AbrilDisplay-ExtraBoldItalic.eot');
+    src: local('Abril Display ExtraBold Italic'), local('AbrilDisplay-ExtraBoldItalic'),
+        url('AbrilDisplay-ExtraBoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('AbrilDisplay-ExtraBoldItalic.woff2') format('woff2'),
+        url('AbrilDisplay-ExtraBoldItalic.woff') format('woff'),
+        url('AbrilDisplay-ExtraBoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Abril Display';
+    src: url('AbrilDisplay-Italic.eot');
+    src: local('Abril Display Italic'), local('AbrilDisplay-Italic'),
+        url('AbrilDisplay-Italic.eot?#iefix') format('embedded-opentype'),
+        url('AbrilDisplay-Italic.woff2') format('woff2'),
+        url('AbrilDisplay-Italic.woff') format('woff'),
+        url('AbrilDisplay-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Abril Display';
+    src: url('AbrilDisplay-SemiBold.eot');
+    src: local('Abril Display SemiBold'), local('AbrilDisplay-SemiBold'),
+        url('AbrilDisplay-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('AbrilDisplay-SemiBold.woff2') format('woff2'),
+        url('AbrilDisplay-SemiBold.woff') format('woff'),
+        url('AbrilDisplay-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Abril Display';
+    src: url('AbrilDisplay-Regular.eot');
+    src: local('Abril Display Regular'), local('AbrilDisplay-Regular'),
+        url('AbrilDisplay-Regular.eot?#iefix') format('embedded-opentype'),
+        url('AbrilDisplay-Regular.woff2') format('woff2'),
+        url('AbrilDisplay-Regular.woff') format('woff'),
+        url('AbrilDisplay-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Abril Fatface';
+    src: url('AbrilFatface-Regular.eot');
+    src: local('Abril Fatface Regular'), local('AbrilFatface-Regular'),
+        url('AbrilFatface-Regular.eot?#iefix') format('embedded-opentype'),
+        url('AbrilFatface-Regular.woff2') format('woff2'),
+        url('AbrilFatface-Regular.woff') format('woff'),
+        url('AbrilFatface-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Abril Fatface';
+    src: url('AbrilFatface-Italic.eot');
+    src: local('Abril Fatface Italic'), local('AbrilFatface-Italic'),
+        url('AbrilFatface-Italic.eot?#iefix') format('embedded-opentype'),
+        url('AbrilFatface-Italic.woff2') format('woff2'),
+        url('AbrilFatface-Italic.woff') format('woff'),
+        url('AbrilFatface-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Abril Display';
+    src: url('AbrilDisplay-SemiBoldItalic.eot');
+    src: local('Abril Display SemiBold Italic'), local('AbrilDisplay-SemiBoldItalic'),
+        url('AbrilDisplay-SemiBoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('AbrilDisplay-SemiBoldItalic.woff2') format('woff2'),
+        url('AbrilDisplay-SemiBoldItalic.woff') format('woff'),
+        url('AbrilDisplay-SemiBoldItalic.ttf') format('truetype');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Abril Text';
+    src: url('AbrilText-BoldItalic.eot');
+    src: local('Abril Text Bold Italic'), local('AbrilText-BoldItalic'),
+        url('AbrilText-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('AbrilText-BoldItalic.woff2') format('woff2'),
+        url('AbrilText-BoldItalic.woff') format('woff'),
+        url('AbrilText-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Abril Text';
+    src: url('AbrilText-Bold.eot');
+    src: local('Abril Text Bold'), local('AbrilText-Bold'),
+        url('AbrilText-Bold.eot?#iefix') format('embedded-opentype'),
+        url('AbrilText-Bold.woff2') format('woff2'),
+        url('AbrilText-Bold.woff') format('woff'),
+        url('AbrilText-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Abril Text';
+    src: url('AbrilText-ExtraBold.eot');
+    src: local('Abril Text ExtraBold'), local('AbrilText-ExtraBold'),
+        url('AbrilText-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('AbrilText-ExtraBold.woff2') format('woff2'),
+        url('AbrilText-ExtraBold.woff') format('woff'),
+        url('AbrilText-ExtraBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Abril Text';
+    src: url('AbrilText-ExtraBoldItalic.eot');
+    src: local('Abril Text ExtraBold Italic'), local('AbrilText-ExtraBoldItalic'),
+        url('AbrilText-ExtraBoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('AbrilText-ExtraBoldItalic.woff2') format('woff2'),
+        url('AbrilText-ExtraBoldItalic.woff') format('woff'),
+        url('AbrilText-ExtraBoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Abril Text';
+    src: url('AbrilText-Italic.eot');
+    src: local('Abril Text Italic'), local('AbrilText-Italic'),
+        url('AbrilText-Italic.eot?#iefix') format('embedded-opentype'),
+        url('AbrilText-Italic.woff2') format('woff2'),
+        url('AbrilText-Italic.woff') format('woff'),
+        url('AbrilText-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Abril Text';
+    src: url('AbrilText-Regular.eot');
+    src: local('Abril Text Regular'), local('AbrilText-Regular'),
+        url('AbrilText-Regular.eot?#iefix') format('embedded-opentype'),
+        url('AbrilText-Regular.woff2') format('woff2'),
+        url('AbrilText-Regular.woff') format('woff'),
+        url('AbrilText-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Abril Text';
+    src: url('AbrilText-LightItalic.eot');
+    src: local('Abril Text Light Italic'), local('AbrilText-LightItalic'),
+        url('AbrilText-LightItalic.eot?#iefix') format('embedded-opentype'),
+        url('AbrilText-LightItalic.woff2') format('woff2'),
+        url('AbrilText-LightItalic.woff') format('woff'),
+        url('AbrilText-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Abril Text';
+    src: url('AbrilText-Light.eot');
+    src: local('Abril Text Light'), local('AbrilText-Light'),
+        url('AbrilText-Light.eot?#iefix') format('embedded-opentype'),
+        url('AbrilText-Light.woff2') format('woff2'),
+        url('AbrilText-Light.woff') format('woff'),
+        url('AbrilText-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Abril Text';
+    src: url('AbrilText-SemiBoldItalic.eot');
+    src: local('Abril Text SemiBold Italic'), local('AbrilText-SemiBoldItalic'),
+        url('AbrilText-SemiBoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('AbrilText-SemiBoldItalic.woff2') format('woff2'),
+        url('AbrilText-SemiBoldItalic.woff') format('woff'),
+        url('AbrilText-SemiBoldItalic.ttf') format('truetype');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Abril Text';
+    src: url('AbrilText-SemiBold.eot');
+    src: local('Abril Text SemiBold'), local('AbrilText-SemiBold'),
+        url('AbrilText-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('AbrilText-SemiBold.woff2') format('woff2'),
+        url('AbrilText-SemiBold.woff') format('woff'),
+        url('AbrilText-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+

@@ -1,0 +1,595 @@
+/* ============================================
+   Things I've Learned About Designing for Protest
+   Custom Styles & Animations
+   ============================================ */
+
+/* ============================================
+   @font-face — Gotham (body/UI)
+   ============================================ */
+@font-face {
+    font-family: 'Gotham';
+    src: url('../fonts/gotham/Gotham-Light.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('../fonts/gotham/Gotham-Book.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('../fonts/gotham/Gotham-BookItalic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('../fonts/gotham/Gotham-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('../fonts/gotham/Gotham-Black.otf') format('opentype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ============================================
+   @font-face — Abril Fatface (display/headings)
+   ============================================ */
+@font-face {
+    font-family: 'Abril Fatface';
+    src: url('../fonts/abril/AbrilFatface-Regular.woff2') format('woff2'),
+         url('../fonts/abril/AbrilFatface-Regular.woff') format('woff'),
+         url('../fonts/abril/AbrilFatface-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Abril Fatface';
+    src: url('../fonts/abril/AbrilFatface-Italic.woff2') format('woff2'),
+         url('../fonts/abril/AbrilFatface-Italic.woff') format('woff'),
+         url('../fonts/abril/AbrilFatface-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Abril Text';
+    src: url('../fonts/abril/AbrilText-Regular.woff2') format('woff2'),
+         url('../fonts/abril/AbrilText-Regular.woff') format('woff'),
+         url('../fonts/abril/AbrilText-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Abril Text';
+    src: url('../fonts/abril/AbrilText-BoldItalic.woff2') format('woff2'),
+         url('../fonts/abril/AbrilText-BoldItalic.woff') format('woff'),
+         url('../fonts/abril/AbrilText-BoldItalic.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+[x-cloak] { display: none !important; }
+
+/* ============================================
+   Base & Reset
+   ============================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; overflow-x: hidden; }
+
+/* ============================================
+   Typography
+   ============================================ */
+.heading-display {
+    font-family: "Gotham", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 0.95;
+    color: #1A1A1A;
+}
+
+.hero-title {
+    font-family: "Gotham", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    font-size: clamp(3rem, 9vw, 6.875rem);
+    line-height: 1.0909090909;
+    color: #1A1A1A;
+}
+
+.quote-text {
+    font-family: "Abril Text", Georgia, serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(1.875rem, 6vw, 2.625rem);
+    line-height: 1.1428571429;
+}
+
+.body-text {
+    font-family: "Abril Text", Georgia, serif;
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.9;
+    color: #1A1A1A;
+}
+
+blockquote p { quotes: none; }
+
+/* ============================================
+   Full-Bleed Images
+   ============================================ */
+.full-bleed-figure {
+    width: 100vw;
+    max-width: none;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    contain: layout style;
+}
+
+/* ============================================
+   Skip Link (Accessibility)
+   ============================================ */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1A1A1A;
+    color: #F5F2E8;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    text-decoration: none;
+    z-index: 9999;
+    border-radius: 0 0 4px 4px;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 3px solid #E63946;
+    outline-offset: 2px;
+}
+
+/* ============================================
+   Grain Texture Overlay
+   ============================================ */
+.grain {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+/* ============================================
+   Scroll Indicator
+   ============================================ */
+.scroll-indicator { animation: bounce 2s infinite; }
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+/* ============================================
+   Hero Stagger Animations (CSS-only, plays once)
+   ============================================ */
+.stagger-1 { opacity: 0; transform: translateY(20px); animation: staggerFadeUp 0.8s ease-out 0.2s forwards; }
+.stagger-2 { opacity: 0; transform: translateY(20px); animation: staggerFadeUp 0.8s ease-out 0.5s forwards; }
+.stagger-3 { opacity: 0; transform: translateY(20px); animation: staggerFadeUp 0.8s ease-out 0.8s forwards; }
+
+@keyframes staggerFadeUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
+   SCROLL-LINKED ANIMATIONS
+   Uses --scroll-progress (0→1) set by JS.
+   Effects play forward AND backward with scroll.
+   ============================================ */
+
+[data-scroll] {
+    --p: var(--scroll-progress, 0);
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                filter 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                clip-path 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform, opacity;
+}
+
+/* Fade up */
+[data-scroll="fade-up"] {
+    opacity: var(--p);
+    transform: translateY(calc((1 - var(--p)) * 24px));
+}
+
+/* Fade + blur */
+[data-scroll="blur-fade"] {
+    opacity: var(--p);
+    filter: blur(calc((1 - var(--p)) * 4px));
+}
+
+/* Slide from left */
+[data-scroll="slide-left"] {
+    opacity: var(--p);
+    transform: translateX(calc((1 - var(--p)) * -30px));
+}
+
+/* Scale up gently */
+[data-scroll="scale"] {
+    opacity: var(--p);
+    transform: scale(calc(0.95 + (var(--p) * 0.05)));
+}
+
+/* Clip reveal from bottom */
+[data-scroll="reveal-up"] {
+    clip-path: polygon(
+        0 calc(100% - (var(--p) * 100%)),
+        100% calc(100% - (var(--p) * 100%)),
+        100% 100%,
+        0 100%
+    );
+}
+
+/* Parallax — slower offset */
+[data-scroll="parallax"] {
+    opacity: var(--p);
+    transform: translateY(calc((1 - var(--p)) * 40px));
+}
+
+/* Dramatic — fade + gentle scale + micro-shift */
+[data-scroll="dramatic"] {
+    opacity: var(--p);
+    transform:
+        translateY(calc((1 - var(--p)) * 16px))
+        scale(calc(0.97 + (var(--p) * 0.03)));
+}
+
+/* ============================================
+   Hotspot Markers
+   ============================================ */
+.hotspot-marker {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 96px;
+    height: 96px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hotspot-marker:focus:not(:focus-visible) { outline: none; }
+.hotspot-marker:focus-visible { outline: 3px solid #FFD60A; outline-offset: 4px; border-radius: 50%; }
+
+.hotspot-dot {
+    position: relative;
+    width: 72px;
+    height: 72px;
+    background: transparent;
+    border-radius: 50%;
+    border: 7px solid #E63946;
+    transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+    z-index: 2;
+    animation: pulseRing 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulseRing {
+    0% { box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.9); }
+    60% { box-shadow: 0 0 0 56px rgba(230, 57, 70, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(230, 57, 70, 0); }
+}
+
+.hotspot-marker:hover .hotspot-dot,
+.hotspot-marker:focus-visible .hotspot-dot {
+    transform: scale(1.15);
+    border-color: #FFD60A;
+    background-color: rgba(255, 214, 10, 0.1);
+}
+
+/* ============================================
+   Expanding Square Popup
+   ============================================ */
+.hotspot-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: rgba(26, 26, 26, 0.4);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+}
+
+.hotspot-popup {
+    position: absolute;
+    background: #FFFFFF;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    z-index: 101;
+    margin-bottom: 24px;
+    transition:
+        left 0.6s cubic-bezier(0.34, 1.2, 0.64, 1),
+        top 0.6s cubic-bezier(0.34, 1.2, 0.64, 1),
+        width 0.6s cubic-bezier(0.34, 1.2, 0.64, 1),
+        height 0.6s cubic-bezier(0.34, 1.2, 0.64, 1),
+        opacity 0.3s ease-out;
+}
+
+.hotspot-popup--collapsed { opacity: 0; pointer-events: none; }
+.hotspot-popup--expanded { opacity: 1; pointer-events: auto; }
+
+.hotspot-popup__inner {
+    position: relative;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transition: opacity 0.4s ease-out;
+}
+
+.hotspot-popup--expanded .hotspot-popup__inner {
+    opacity: 1;
+    transition-delay: 0.2s;
+}
+
+.hotspot-popup__close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1A1A1A;
+    border: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    z-index: 10;
+}
+
+.hotspot-popup__close:hover { background: #E63946; }
+.hotspot-popup__close:focus:not(:focus-visible) { outline: none; }
+.hotspot-popup__close:focus-visible { outline: 3px solid #FFD60A; outline-offset: -3px; background: #E63946; }
+.hotspot-popup__close svg { width: 100%; height: 100%; }
+
+.hotspot-popup__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.hotspot-popup__label {
+    font-family: "Gotham", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.75rem, 7vw, 2.625rem);
+    line-height: 1.1428571429;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #1A1A1A;
+    margin: 0 0 14px 0;
+    padding-right: 20px;
+}
+
+.hotspot-popup__description {
+    font-family: "Gotham", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    color: #1A1A1A;
+    margin: 0;
+    padding-right: 20px;
+    overflow-wrap: break-word;
+}
+
+/* ============================================
+   Audio Player
+   ============================================ */
+.hotspot-audio {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+    padding: 0;
+    background: transparent;
+}
+
+.hotspot-audio--inline { margin-top: 0; }
+
+.hotspot-audio__btn {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #E63946;
+    border: none;
+    border-radius: 50%;
+    color: #F5F2E8;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.hotspot-audio__btn svg { width: 20px; height: 20px; }
+.hotspot-audio__btn:hover { background: #FFD60A; color: #1A1A1A; transform: scale(1.08); }
+.hotspot-audio__btn:focus-visible { outline: 2px solid #FFD60A; outline-offset: 2px; }
+
+.hotspot-audio__track {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.hotspot-audio__bar {
+    position: relative;
+    height: 6px;
+    background: rgba(26, 26, 26, 0.12);
+    border-radius: 3px;
+    cursor: pointer;
+    touch-action: none;
+}
+
+.hotspot-audio__fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: #E63946;
+    border-radius: 3px;
+    pointer-events: none;
+}
+
+.hotspot-audio__thumb {
+    position: absolute;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    background: #E63946;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+.hotspot-audio__bar:hover .hotspot-audio__thumb { opacity: 1; }
+
+.hotspot-audio__time {
+    display: flex;
+    gap: 3px;
+    font-family: "Gotham", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: #4A4A4A;
+    line-height: 1;
+    user-select: none;
+}
+
+.hotspot-audio__time-sep { opacity: 0.5; }
+
+@media (min-width: 640px) {
+    .hotspot-popup__inner { padding: 48px; }
+    .hotspot-popup__close { width: 44px; height: 44px; }
+    .hotspot-popup__label { font-size: 2.625rem; margin-bottom: 16px; padding-right: 40px; }
+    .hotspot-popup__description { padding-right: 40px; }
+    .hotspot-audio { margin-top: 32px; gap: 16px; }
+    .hotspot-audio__btn { width: 56px; height: 56px; }
+    .hotspot-audio__btn svg { width: 24px; height: 24px; }
+    .hotspot-audio__bar { height: 8px; border-radius: 4px; }
+    .hotspot-audio__fill { border-radius: 4px; }
+    .hotspot-audio__thumb { width: 16px; height: 16px; }
+}
+
+/* ============================================
+   Focus Styles
+   ============================================ */
+:focus-visible { outline: 2px solid #E63946; outline-offset: 2px; }
+button:focus-visible, a:focus-visible { outline: 2px solid #E63946; outline-offset: 2px; }
+
+/* ============================================
+   Reduced Motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    [data-scroll] {
+        --p: 1 !important;
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        clip-path: none !important;
+    }
+}
+
+/* ============================================
+   Selection Styles
+   ============================================ */
+::selection { background: #E63946; color: #F5F2E8; }
+
+/* ============================================
+   Scrollbar
+   ============================================ */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #F5F2E8; }
+::-webkit-scrollbar-thumb { background: #4A4A4A; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #E63946; }
+html { scrollbar-width: thin; scrollbar-color: #4A4A4A #F5F2E8; }
+
+/* ============================================
+   Screen Reader Only
+   ============================================ */
+.sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap; border: 0;
+}
+
+/* ============================================
+   Image Containers — CLS prevention
+   ============================================ */
+figure { margin: 0; }
+figure img { display: block; }
+
+.full-bleed-figure img {
+    aspect-ratio: auto 3/2;
+    background: #edebe4;
+}
+
+/* ============================================
+   Mobile Adjustments
+   ============================================ */
+@media (max-width: 768px) {
+    .hotspot-marker { width: 78px; height: 78px; }
+    .hotspot-dot { width: 56px; height: 56px; border-width: 5px; }
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+@media print {
+    .hotspot-marker, .scroll-indicator, .skip-link { display: none !important; }
+    body { background: white; color: black; }
+    section { page-break-inside: avoid; }
+}
