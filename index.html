@@ -480,7 +480,7 @@
         </div>
 
         <!-- ===== HOTSPOT POPUP ===== -->
-        <div x-show="popupOpen" x-cloak class="hotspot-overlay" :class="popupExpanded && 'hotspot-overlay--visible'" @keydown.escape.window="popupOpen && closeHotspot()" @click.self="popupOpen && closeHotspot()">
+        <div x-show="popupOpen" x-cloak class="hotspot-overlay" :class="popupExpanded && 'hotspot-overlay--visible'" @keydown.escape.window="popupOpen && closeHotspot()" @click.self="popupOpen && closeHotspot()" @wheel.self.prevent @touchmove.self.prevent>
             <div class="hotspot-popup" :class="popupExpanded ? 'hotspot-popup--expanded' : 'hotspot-popup--collapsed'" role="dialog" aria-modal="true" :aria-labelledby="activeHotspot ? 'hotspot-label-' + activeHotspot.id : null" :aria-describedby="activeHotspot ? 'hotspot-desc-' + activeHotspot.id : null" x-trap="popupOpen">
                 <button class="hotspot-popup__close" @click="closeHotspot()" aria-label="Close popup">
                     <svg viewBox="0 0 24 24" width="100%" height="100%" stroke="currentColor" stroke-width="1" preserveAspectRatio="none" aria-hidden="true" focusable="false">
