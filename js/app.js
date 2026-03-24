@@ -11,10 +11,8 @@ function protestEssay() {
         activeImage: null,
         popupOpen: false,
         popupExpanded: false,
-        popupStyle: { left: 0, top: 0, width: 40, height: 40 },
-        popupOrigin: { x: 0, y: 0 },
-        popupTarget: { x: 0, y: 0, width: 0, height: 0 },
         previouslyFocused: null,
+        _savedScrollY: 0,
 
         images: [
             {
@@ -262,94 +260,16 @@ function protestEssay() {
             }
         ],
 
-        get computedPopupStyle() {
-            const s = this.popupStyle;
-            return `left:${s.left}px;top:${s.top}px;width:${s.width}px;height:${s.height}px`;
-        },
-
         openHotspot(image, hotspot, event) {
             this.previouslyFocused = document.activeElement;
-            const btn = event?.currentTarget || event?.target;
-            let ox, oy;
-            if (btn) {
-                const r = btn.getBoundingClientRect();
-                ox = r.left + r.width / 2;
-                oy = r.top + r.height / 2;
-            } else {
-                ox = window.innerWidth / 2;
-                oy = window.innerHeight / 2;
-            }
-            this.popupOrigin = { x: ox, y: oy };
-
             this.activeImage = image;
             this.activeHotspot = hotspot;
-            this.popupOpen = true;
             this._savedScrollY = window.scrollY;
             document.documentElement.classList.add('popup-scroll-lock');
-            document.body.classList.add('popup-scroll-lock');
-            window.scrollTo(0, this._savedScrollY);
-            this.popupStyle = { left: ox - 10, top: oy - 10, width: 20, height: 20 };
-
+            document.body.style.top = `-${this._savedScrollY}px`;
+            this.popupOpen = true;
             this.$nextTick(() => {
-                setTimeout(() => {
-                    const overlayEl = document.querySelector('.hotspot-overlay');
-                    if (overlayEl) {
-                        overlayEl.style.display = 'block';
-                        overlayEl.scrollTop = 0;
-                    }
-
-                    const popupEl = document.querySelector('.hotspot-popup');
-                    const innerEl = document.querySelector('.hotspot-popup__inner');
-                    if (!popupEl) return;
-
-                    const vw = overlayEl ? overlayEl.clientWidth : document.documentElement.clientWidth;
-                    const vh = window.innerHeight;
-                    const mobile = vw < 640;
-                    const gap = 24;
-                    const maxWidth = mobile ? vw - (gap * 2) : Math.min(vw * 0.45, 520);
-                    const minWidth = mobile ? vw - (gap * 2) : 320;
-
-                    const oldTransition = popupEl.style.transition;
-                    popupEl.style.transition = 'none';
-                    popupEl.style.width = 'auto';
-                    popupEl.style.height = 'auto';
-                    popupEl.style.minWidth = minWidth + 'px';
-                    popupEl.style.maxWidth = maxWidth + 'px';
-                    if (innerEl) { innerEl.style.width = ''; innerEl.style.height = ''; }
-
-                    const pw = popupEl.offsetWidth;
-                    const ph = popupEl.offsetHeight;
-
-                    popupEl.style.minWidth = '';
-                    popupEl.style.maxWidth = '';
-                    popupEl.style.width = '20px';
-                    popupEl.style.height = '20px';
-                    if (innerEl) { innerEl.style.width = pw + 'px'; innerEl.style.height = ph + 'px'; }
-
-                    void popupEl.offsetHeight;
-                    popupEl.style.transition = oldTransition;
-
-                    let fx, fy;
-                    if (mobile) {
-                        fx = (vw - pw) / 2;
-                        fy = (vh - ph) / 2;
-                        if (fy < gap) fy = gap;
-                    } else {
-                        fx = ox + 20;
-                        fy = oy - ph / 2;
-                        const pad = 20;
-                        if (fx + pw > vw - pad) fx = ox - pw - 20;
-                        if (fy + ph > vh - pad) fy = vh - ph - pad;
-                        if (fy < pad) fy = pad;
-                        fx = Math.max(pad, Math.min(fx, vw - pw - pad));
-                    }
-
-                    this.popupTarget = { x: fx, y: fy, width: pw, height: ph };
-                    requestAnimationFrame(() => {
-                        this.popupStyle = { left: fx, top: fy, width: pw, height: ph };
-                        this.popupExpanded = true;
-                    });
-                }, 30);
+                requestAnimationFrame(() => { this.popupExpanded = true; });
             });
         },
 
@@ -359,27 +279,18 @@ function protestEssay() {
                 window._activeAudioPlayer = null;
             }
             this.popupExpanded = false;
-            this.popupStyle = {
-                left: this.popupOrigin.x - 10,
-                top: this.popupOrigin.y - 10,
-                width: 20, height: 20
-            };
             setTimeout(() => {
-                document.documentElement.classList.remove('popup-scroll-lock');
-                document.body.classList.remove('popup-scroll-lock');
-                window.scrollTo(0, this._savedScrollY || 0);
-                const overlayEl = document.querySelector('.hotspot-overlay');
-                if (overlayEl) overlayEl.style.display = '';
                 this.popupOpen = false;
                 this.activeHotspot = null;
                 this.activeImage = null;
-                const innerEl = document.querySelector('.hotspot-popup__inner');
-                if (innerEl) { innerEl.style.width = ''; innerEl.style.height = ''; }
+                document.documentElement.classList.remove('popup-scroll-lock');
+                document.body.style.top = '';
+                window.scrollTo(0, this._savedScrollY || 0);
                 if (this.previouslyFocused) {
                     this.previouslyFocused.focus();
                     this.previouslyFocused = null;
                 }
-            }, 300);
+            }, 350);
         },
 
         init() {
