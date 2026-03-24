@@ -92,6 +92,12 @@
 #tyler-essay[x-cloak] { display: none !important; }
 [x-cloak] { display: none !important; }
 
+html.popup-scroll-lock,
+html.popup-scroll-lock body {
+    overflow: hidden !important;
+    height: 100% !important;
+}
+
 /* ============================================
    Base & Reset
    ============================================ */

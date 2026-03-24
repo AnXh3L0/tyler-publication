@@ -285,10 +285,9 @@ function protestEssay() {
             this.activeHotspot = hotspot;
             this.popupOpen = true;
             this._savedScrollY = window.scrollY;
-            document.body.style.position = 'fixed';
-            document.body.style.top = `-${this._savedScrollY}px`;
-            document.body.style.width = '100%';
-            document.body.style.overflow = 'hidden';
+            document.documentElement.classList.add('popup-scroll-lock');
+            document.body.classList.add('popup-scroll-lock');
+            window.scrollTo(0, this._savedScrollY);
             this.popupStyle = { left: ox - 10, top: oy - 10, width: 20, height: 20 };
 
             this.$nextTick(() => {
@@ -366,10 +365,8 @@ function protestEssay() {
                 width: 20, height: 20
             };
             setTimeout(() => {
-                document.body.style.position = '';
-                document.body.style.top = '';
-                document.body.style.width = '';
-                document.body.style.overflow = '';
+                document.documentElement.classList.remove('popup-scroll-lock');
+                document.body.classList.remove('popup-scroll-lock');
                 window.scrollTo(0, this._savedScrollY || 0);
                 const overlayEl = document.querySelector('.hotspot-overlay');
                 if (overlayEl) overlayEl.style.display = '';
