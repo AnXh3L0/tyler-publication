@@ -266,7 +266,8 @@ function protestEssay() {
             this.activeHotspot = hotspot;
             this._savedScrollY = window.scrollY;
             document.documentElement.classList.add('popup-scroll-lock');
-            document.body.style.top = `-${this._savedScrollY}px`;
+            this._scrollGuard = () => window.scrollTo(0, this._savedScrollY);
+            window.addEventListener('scroll', this._scrollGuard);
             this.popupOpen = true;
             this.$nextTick(() => {
                 requestAnimationFrame(() => { this.popupExpanded = true; });
@@ -284,7 +285,10 @@ function protestEssay() {
                 this.activeHotspot = null;
                 this.activeImage = null;
                 document.documentElement.classList.remove('popup-scroll-lock');
-                document.body.style.top = '';
+                if (this._scrollGuard) {
+                    window.removeEventListener('scroll', this._scrollGuard);
+                    this._scrollGuard = null;
+                }
                 window.scrollTo(0, this._savedScrollY || 0);
                 if (this.previouslyFocused) {
                     this.previouslyFocused.focus();
