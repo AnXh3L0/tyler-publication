@@ -284,7 +284,11 @@ function protestEssay() {
             this.activeImage = image;
             this.activeHotspot = hotspot;
             this.popupOpen = true;
-            document.documentElement.style.overflow = 'hidden';
+            this._savedScrollY = window.scrollY;
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${this._savedScrollY}px`;
+            document.body.style.width = '100%';
+            document.body.style.overflow = 'hidden';
             this.popupStyle = { left: ox - 10, top: oy - 10, width: 20, height: 20 };
 
             this.$nextTick(() => {
@@ -362,7 +366,11 @@ function protestEssay() {
                 width: 20, height: 20
             };
             setTimeout(() => {
-                document.documentElement.style.overflow = '';
+                document.body.style.position = '';
+                document.body.style.top = '';
+                document.body.style.width = '';
+                document.body.style.overflow = '';
+                window.scrollTo(0, this._savedScrollY || 0);
                 const overlayEl = document.querySelector('.hotspot-overlay');
                 if (overlayEl) overlayEl.style.display = '';
                 this.popupOpen = false;
@@ -439,18 +447,24 @@ function audioPlayer() {
             if (!src) return;
             this.audio = new Audio(src);
             this.audio.preload = 'metadata';
-            const onMeta = () => {
+            this.audio.addEventListener('loadedmetadata', () => {
+                if (!this.audio) return;
                 this.duration = this.audio.duration;
                 this.loaded = true;
-            };
-            this.audio.addEventListener('loadedmetadata', onMeta);
-            if (this.audio.readyState >= 1) onMeta();
+            });
             this.audio.addEventListener('ended', () => {
+                if (!this.audio) return;
                 this.playing = false;
                 this.currentTime = this.duration;
                 this.progress = 100;
                 cancelAnimationFrame(this._raf);
                 if (window._activeAudioPlayer === this) window._activeAudioPlayer = null;
+            });
+            this.audio.addEventListener('error', () => {
+                if (!this.audio) return;
+                this.playing = false;
+                this.loaded = false;
+                cancelAnimationFrame(this._raf);
             });
         },
 
