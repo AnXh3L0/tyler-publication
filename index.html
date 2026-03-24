@@ -1,18 +1,25 @@
 <!DOCTYPE html>
-<html lang="en" x-data="protestEssay()" x-cloak>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Things I've Learned About Designing for Protest - An interactive visual essay exploring effective protest design principles.">
     <meta name="theme-color" content="#1A1A1A">
     <title>Things I've Learned About Designing for Protest</title>
-    
-    <link rel="preload" href="fonts/abril/AbrilFatface-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="fonts/gotham/Gotham-Book.otf" as="font" type="font/otf" crossorigin>
-    
+
+    <!-- ============================================================
+         SQUARESPACE: Paste lines between START/END into
+         Settings > Advanced > Code Injection > HEADER
+         ============================================================ -->
+    <!-- ===== START Code Injection — Header ===== -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/AnXh3L0/tyler-publication@main/fonts/abril/AbrilFatface-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/AnXh3L0/tyler-publication@main/fonts/gotham/Gotham-Book.otf" as="font" type="font/otf" crossorigin>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            important: '#tyler-essay',
+            corePlugins: { preflight: false },
             theme: {
                 extend: {
                     fontFamily: {
@@ -30,220 +37,92 @@
             }
         }
     </script>
-    
+
     <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
-    <link rel="stylesheet" href="css/styles.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AnXh3L0/tyler-publication@main/css/styles.css">
+    <!-- ===== END Code Injection — Header ===== -->
 </head>
-<body class="bg-white text-ink font-body antialiased">
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+<body>
+    <!-- ============================================================
+         SQUARESPACE: Paste everything between START/END into
+         a Code Block on your page (Add Block > Code)
+         ============================================================ -->
+    <!-- ===== START Page Code Block ===== -->
+    <div id="tyler-essay" x-data="protestEssay()" x-cloak class="bg-white text-ink font-body antialiased">
+        <a href="#tyler-main" class="skip-link">Skip to main content</a>
 
-    <main id="main-content">
+        <div id="tyler-main">
 
-        <!-- ===== HERO ===== -->
-        <header class="min-h-screen flex flex-col justify-center items-center px-6 py-20 relative overflow-hidden">
-            <div class="absolute inset-0 bg-ink opacity-[0.03]" aria-hidden="true"><div class="grain"></div></div>
-            <div class="text-center max-w-4xl mx-auto relative z-10">
-                <p class="text-warm-gray font-body text-lg md:text-xl tracking-widest uppercase mb-6 stagger-1">draft 2</p>
-                <h1 class="heading-display hero-title text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl mb-4 stagger-2">
-                    Things I've Learned About Designing For Protest
-                </h1>
-                <div class="mt-16 stagger-3" aria-hidden="true">
-                    <div class="scroll-indicator">
-                        <span class="sr-only">Scroll down to continue</span>
-                        <svg class="w-8 h-12 text-warm-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <!-- ===== FULL ESSAY AUDIO ===== -->
-        <section class="py-8 px-6 lg:px-12" aria-label="Full essay audio">
-            <div class="max-w-3xl mx-auto" x-data="audioPlayer()" x-init="loadAudio('audio/0_FullMix_DesigningForDissent_Galloway_01.ogg')">
-                <p class="font-body text-warm-gray text-sm uppercase tracking-widest mb-3">Listen to the full essay</p>
-                <div class="hotspot-audio hotspot-audio--inline">
-                    <button class="hotspot-audio__btn" @click="togglePlay()" :aria-label="playing ? 'Pause full essay audio' : 'Play full essay audio'">
-                        <svg x-show="!playing" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                        <svg x-show="playing" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                    </button>
-                    <div class="hotspot-audio__track">
-                        <div class="hotspot-audio__bar" @mousedown="startScrub($event)" @touchstart.prevent="startScrub($event)" role="slider" :aria-valuenow="Math.round(currentTime)" :aria-valuemin="0" :aria-valuemax="Math.round(duration)" aria-label="Full essay audio progress">
-                            <div class="hotspot-audio__fill" :style="`width: ${progress}%`"></div>
-                            <div class="hotspot-audio__thumb" :style="`left: ${progress}%`"></div>
-                        </div>
-                        <div class="hotspot-audio__time">
-                            <span x-text="formatTime(currentTime)"></span>
-                            <span class="hotspot-audio__time-sep">/</span>
-                            <span x-text="formatTime(duration)"></span>
+            <!-- ===== HERO ===== -->
+            <section class="min-h-screen flex flex-col justify-center items-center px-6 py-20 relative overflow-hidden">
+                <div class="absolute inset-0 bg-ink opacity-[0.03]" aria-hidden="true"><div class="grain"></div></div>
+                <div class="text-center max-w-4xl mx-auto relative z-10">
+                    <p class="text-warm-gray font-body text-lg md:text-xl tracking-widest uppercase mb-6 stagger-1">draft 2</p>
+                    <h1 class="heading-display hero-title text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl mb-4 stagger-2">
+                        Things I've Learned About Designing For Protest
+                    </h1>
+                    <div class="mt-16 stagger-3" aria-hidden="true">
+                        <div class="scroll-indicator">
+                            <span class="sr-only">Scroll down to continue</span>
+                            <svg class="w-8 h-12 text-warm-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- ===== INTRO ===== -->
-        <section class="py-24 md:py-40 px-6 lg:px-12" aria-labelledby="intro-heading">
-            <article class="max-w-3xl mx-auto">
-                <h2 id="intro-heading" class="sr-only">Introduction</h2>
-                <div class="body-text space-y-8">
-                    <p data-scroll="fade-up">Like many other tools, technologies, and processes, design has tremendous power that can be focused in almost any direction and to almost any end. Way too often, it is used to further a capitalist, consumerist agenda or to prevent, rather than promote, critical thought and action. Thankfully, there is always a countervailing conversation that offers alternatives, speaks truth to power, and seeks to increase equity, justice, sustainability, and the collective power of ordinary people. Design, of course, has tremendous power to amplify those dissenting voices as well. it, in fact, has a responsibility to do so if for no other reason than to facilitate those alternatives.</p>
-                    <p data-scroll="fade-up">For over a decade, working under the studio moniker "the new programme" and with the help of a small stream of student collaborators, I've served as the principal designer for "Stand Up KC". This organization is a founding city in the nationwide "Fight for $15" movement to earn restaurant and low-wage workers a living wage, needed benefits, increased workplace safety, freedom from sexual harassment, and the right to unionize. Kansas City was one of the first seven cities in American history to see fast food workers go on strike.</p>
-                    <p data-scroll="fade-up">I was approached by one of the primary organizers, Mike Enriquez, after working alongside him on several similar initiatives that proved to be great test cases for what "Stand Up KC" would grow into – a powerful voice for anti-racist, working-class organizing, and one of the more visible and impactful groups in this nationwide struggle. This became possible because we have maintained a long-running relationship, and because Mike recognized that thoughtful and strategic design could add credibility, increase worker solidarity, and amplify the messages that proved critical to the movement's success.</p>
-                    <p data-scroll="fade-up">All the same principles of identity design can fight capital in addition to promoting it. "Stand Up KC"'s visual identity created a solid foundation on which to build a wide array of posters, banners, flyers, and other ephemera needed by the organization. What follows is much of what I've learned from these experiences over more than a decade of fruitful collaboration.</p>
-                </div>
-            </article>
-        </section>
-
-        <!-- ===== 01 CONSISTENT IDENTITY ===== -->
-        <section class="py-24 md:py-40 px-6 lg:px-12" aria-labelledby="branding-heading">
-            <article class="max-w-4xl mx-auto">
-                <h2 id="branding-heading" class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8" data-scroll="blur-fade">Consistent Identity</h2>
-                <div class="body-text space-y-8">
-                    <p data-scroll="blur-fade">Most anyone at this point knows that one key to a strong visual identity is consistency of application. Establish the values, build elements that visually embody those values, and use them every chance you get across all touchpoints. Building a consistent identity does three key things:</p>
-                </div>
-            </article>
-        </section>
-
-        <!-- Image 1: Terrence -->
-        <template x-for="img in images.filter(i => i.id === 1)" :key="img.id">
-            <figure class="full-bleed-figure relative overflow-visible mb-12">
-                <div class="relative w-full" x-data="{ loaded: false }" x-intersect:enter.once="loaded = true">
-                    <img :src="img.src" :alt="img.alt" class="w-full h-auto transition-opacity duration-700 block" :class="loaded ? 'opacity-100' : 'opacity-0'" loading="lazy" decoding="async">
-                    <template x-for="hotspot in img.hotspots" :key="hotspot.id">
-                        <button class="hotspot-marker" :style="`left: ${hotspot.x}%; top: ${hotspot.y}%`" :aria-label="`View details: ${hotspot.label}`" @click="openHotspot(img, hotspot, $event)" @keydown.enter="openHotspot(img, hotspot, $event)" @keydown.space.prevent="openHotspot(img, hotspot, $event)">
-                            <span class="hotspot-dot" aria-hidden="true"></span>
+            <!-- ===== FULL ESSAY AUDIO ===== -->
+            <section class="py-8 px-6 lg:px-12" aria-label="Full essay audio">
+                <div class="max-w-3xl mx-auto" x-data="audioPlayer()" x-init="loadAudio('https://raw.githubusercontent.com/AnXh3L0/tyler-publication/main/audio/0_FullMix_DesigningForDissent_Galloway_01.ogg')">
+                    <p class="font-body text-warm-gray text-sm uppercase tracking-widest mb-3">Listen to the full essay</p>
+                    <div class="hotspot-audio hotspot-audio--inline">
+                        <button class="hotspot-audio__btn" @click="togglePlay()" :aria-label="playing ? 'Pause full essay audio' : 'Play full essay audio'">
+                            <svg x-show="!playing" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            <svg x-show="playing" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
                         </button>
-                    </template>
-                </div>
-                <figcaption class="text-center text-sm text-warm-gray py-3 px-6" x-show="img.credit" x-text="img.credit"></figcaption>
-            </figure>
-        </template>
-
-        <!-- Terrence Wise quote -->
-        <section class="py-16 md:py-24 px-6" aria-label="Quote from Terrence Wise">
-            <blockquote class="max-w-4xl mx-auto pl-8 md:pl-12 border-l-8 border-protest-red" data-scroll="scale">
-                <p class="quote-text text-3xl md:text-4xl lg:text-5xl text-ink leading-tight">&ldquo;...Some of the most powerful imaging is our shirts. When people see the Stand Up KC shirt coming around the corner, walking into workplaces, it immediately catches their eye&hellip;&rdquo;</p>
-                <footer><cite class="block mt-8 text-lg md:text-xl text-warm-gray not-italic tracking-widest uppercase">– Terrence Wise, Stand Up KC worker-leader</cite></footer>
-            </blockquote>
-        </section>
-
-        <!-- ===== 02 CONSIDERING CONTEXT ===== -->
-        <section class="py-24 md:py-40 px-6 lg:px-12" aria-labelledby="context-heading">
-            <article class="max-w-4xl mx-auto">
-                <h2 id="context-heading" class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8" data-scroll="slide-left">Considering Context</h2>
-                <div class="body-text space-y-8 mb-12">
-                    <p data-scroll="slide-left">Understanding the context in which your work sits is incredibly important for any designer, and is arguably more critical when going out into the street with messages that could improve the circumstances of your life.</p>
-                </div>
-            </article>
-
-            <template x-for="img in images.filter(i => i.id === 2)" :key="img.id">
-                <figure class="full-bleed-figure relative overflow-visible">
-                    <div class="relative w-full" x-data="{ loaded: false }" x-intersect:enter.once="loaded = true">
-                        <img :src="img.src" :alt="img.alt" class="w-full h-auto transition-opacity duration-700 block" :class="loaded ? 'opacity-100' : 'opacity-0'" loading="lazy" decoding="async">
-                        <template x-for="hotspot in img.hotspots" :key="hotspot.id">
-                            <button class="hotspot-marker" :style="`left: ${hotspot.x}%; top: ${hotspot.y}%`" :aria-label="`View details: ${hotspot.label}`" @click="openHotspot(img, hotspot, $event)" @keydown.enter="openHotspot(img, hotspot, $event)" @keydown.space.prevent="openHotspot(img, hotspot, $event)">
-                                <span class="hotspot-dot" aria-hidden="true"></span>
-                            </button>
-                        </template>
+                        <div class="hotspot-audio__track">
+                            <div class="hotspot-audio__bar" @mousedown="startScrub($event)" @touchstart.prevent="startScrub($event)" role="slider" :aria-valuenow="Math.round(currentTime)" :aria-valuemin="0" :aria-valuemax="Math.round(duration)" aria-label="Full essay audio progress">
+                                <div class="hotspot-audio__fill" :style="`width: ${progress}%`"></div>
+                                <div class="hotspot-audio__thumb" :style="`left: ${progress}%`"></div>
+                            </div>
+                            <div class="hotspot-audio__time">
+                                <span x-text="formatTime(currentTime)"></span>
+                                <span class="hotspot-audio__time-sep">/</span>
+                                <span x-text="formatTime(duration)"></span>
+                            </div>
+                        </div>
                     </div>
-                </figure>
-            </template>
-        </section>
-
-        <!-- ===== 03 CONCISE MESSAGING ===== -->
-        <section class="py-24 md:py-40 px-6 lg:px-12" aria-labelledby="messaging-heading">
-            <article class="max-w-4xl mx-auto">
-                <h2 id="messaging-heading" class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8" data-scroll="dramatic">Concise Messaging</h2>
-                <div class="body-text space-y-8 mb-16">
-                    <p data-scroll="dramatic">Virtually inseparable from the issue of context is the need to create the most meaningfully precise, concise message possible.</p>
                 </div>
-            </article>
+            </section>
 
-            <div class="space-y-24">
-                <template x-for="img in images.filter(i => i.id === 3)" :key="img.id">
-                    <figure class="full-bleed-figure relative overflow-visible">
-                        <div class="relative w-full" x-data="{ loaded: false }" x-intersect:enter.once="loaded = true">
-                            <img :src="img.src" :alt="img.alt" class="w-full h-auto transition-opacity duration-700 block" :class="loaded ? 'opacity-100' : 'opacity-0'" loading="lazy" decoding="async">
-                            <template x-for="hotspot in img.hotspots" :key="hotspot.id">
-                                <button class="hotspot-marker" :style="`left: ${hotspot.x}%; top: ${hotspot.y}%`" :aria-label="`View details: ${hotspot.label}`" @click="openHotspot(img, hotspot, $event)" @keydown.enter="openHotspot(img, hotspot, $event)" @keydown.space.prevent="openHotspot(img, hotspot, $event)">
-                                    <span class="hotspot-dot" aria-hidden="true"></span>
-                                </button>
-                            </template>
-                        </div>
-                    </figure>
-                </template>
+            <!-- ===== INTRO ===== -->
+            <section class="py-24 md:py-40 px-6 lg:px-12" aria-labelledby="intro-heading">
+                <article class="max-w-3xl mx-auto">
+                    <h2 id="intro-heading" class="sr-only">Introduction</h2>
+                    <div class="body-text space-y-8">
+                        <p data-scroll="fade-up">Like many other tools, technologies, and processes, design has tremendous power that can be focused in almost any direction and to almost any end. Way too often, it is used to further a capitalist, consumerist agenda or to prevent, rather than promote, critical thought and action. Thankfully, there is always a countervailing conversation that offers alternatives, speaks truth to power, and seeks to increase equity, justice, sustainability, and the collective power of ordinary people. Design, of course, has tremendous power to amplify those dissenting voices as well. it, in fact, has a responsibility to do so if for no other reason than to facilitate those alternatives.</p>
+                        <p data-scroll="fade-up">For over a decade, working under the studio moniker "the new programme" and with the help of a small stream of student collaborators, I've served as the principal designer for "Stand Up KC". This organization is a founding city in the nationwide "Fight for $15" movement to earn restaurant and low-wage workers a living wage, needed benefits, increased workplace safety, freedom from sexual harassment, and the right to unionize. Kansas City was one of the first seven cities in American history to see fast food workers go on strike.</p>
+                        <p data-scroll="fade-up">I was approached by one of the primary organizers, Mike Enriquez, after working alongside him on several similar initiatives that proved to be great test cases for what "Stand Up KC" would grow into – a powerful voice for anti-racist, working-class organizing, and one of the more visible and impactful groups in this nationwide struggle. This became possible because we have maintained a long-running relationship, and because Mike recognized that thoughtful and strategic design could add credibility, increase worker solidarity, and amplify the messages that proved critical to the movement's success.</p>
+                        <p data-scroll="fade-up">All the same principles of identity design can fight capital in addition to promoting it. "Stand Up KC"'s visual identity created a solid foundation on which to build a wide array of posters, banners, flyers, and other ephemera needed by the organization. What follows is much of what I've learned from these experiences over more than a decade of fruitful collaboration.</p>
+                    </div>
+                </article>
+            </section>
 
-                <template x-for="img in images.filter(i => i.id === 4)" :key="img.id">
-                    <figure class="full-bleed-figure relative overflow-visible">
-                        <div class="relative w-full" x-data="{ loaded: false }" x-intersect:enter.once="loaded = true">
-                            <img :src="img.src" :alt="img.alt" class="w-full h-auto transition-opacity duration-700 block" :class="loaded ? 'opacity-100' : 'opacity-0'" loading="lazy" decoding="async">
-                            <template x-for="hotspot in img.hotspots" :key="hotspot.id">
-                                <button class="hotspot-marker" :style="`left: ${hotspot.x}%; top: ${hotspot.y}%`" :aria-label="`View details: ${hotspot.label}`" @click="openHotspot(img, hotspot, $event)" @keydown.enter="openHotspot(img, hotspot, $event)" @keydown.space.prevent="openHotspot(img, hotspot, $event)">
-                                    <span class="hotspot-dot" aria-hidden="true"></span>
-                                </button>
-                            </template>
-                        </div>
-                    </figure>
-                </template>
-            </div>
-        </section>
+            <!-- ===== 01 CONSISTENT IDENTITY ===== -->
+            <section class="py-24 md:py-40 px-6 lg:px-12" aria-labelledby="branding-heading">
+                <article class="max-w-4xl mx-auto">
+                    <h2 id="branding-heading" class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8" data-scroll="blur-fade">Consistent Identity</h2>
+                    <div class="body-text space-y-8">
+                        <p data-scroll="blur-fade">Most anyone at this point knows that one key to a strong visual identity is consistency of application. Establish the values, build elements that visually embody those values, and use them every chance you get across all touchpoints. Building a consistent identity does three key things:</p>
+                    </div>
+                </article>
+            </section>
 
-        <!-- ===== 04 PHYSICAL CONSTRAINTS ===== -->
-        <section class="py-24 md:py-40 px-6 lg:px-12" aria-labelledby="constraints-heading">
-            <article class="max-w-4xl mx-auto">
-                <h2 id="constraints-heading" class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8" data-scroll="reveal-up">Honor and/or Exploit Physical Constraints</h2>
-            </article>
-
-            <div class="space-y-24">
-                <template x-for="img in images.filter(i => i.id === 5)" :key="img.id">
-                    <figure class="full-bleed-figure relative overflow-visible">
-                        <div class="relative w-full" x-data="{ loaded: false }" x-intersect:enter.once="loaded = true">
-                            <img :src="img.src" :alt="img.alt" class="w-full h-auto transition-opacity duration-700 block" :class="loaded ? 'opacity-100' : 'opacity-0'" loading="lazy" decoding="async">
-                            <template x-for="hotspot in img.hotspots" :key="hotspot.id">
-                                <button class="hotspot-marker" :style="`left: ${hotspot.x}%; top: ${hotspot.y}%`" :aria-label="`View details: ${hotspot.label}`" @click="openHotspot(img, hotspot, $event)" @keydown.enter="openHotspot(img, hotspot, $event)" @keydown.space.prevent="openHotspot(img, hotspot, $event)">
-                                    <span class="hotspot-dot" aria-hidden="true"></span>
-                                </button>
-                            </template>
-                        </div>
-                    </figure>
-                </template>
-
-                <template x-for="img in images.filter(i => i.id === 10)" :key="img.id">
-                    <figure class="full-bleed-figure relative overflow-visible">
-                        <div class="relative w-full" x-data="{ loaded: false }" x-intersect:enter.once="loaded = true">
-                            <img :src="img.src" :alt="img.alt" class="w-full h-auto transition-opacity duration-700 block" :class="loaded ? 'opacity-100' : 'opacity-0'" loading="lazy" decoding="async">
-                            <template x-for="hotspot in img.hotspots" :key="hotspot.id">
-                                <button class="hotspot-marker" :style="`left: ${hotspot.x}%; top: ${hotspot.y}%`" :aria-label="`View details: ${hotspot.label}`" @click="openHotspot(img, hotspot, $event)" @keydown.enter="openHotspot(img, hotspot, $event)" @keydown.space.prevent="openHotspot(img, hotspot, $event)">
-                                    <span class="hotspot-dot" aria-hidden="true"></span>
-                                </button>
-                            </template>
-                        </div>
-                    </figure>
-                </template>
-            </div>
-
-            <article class="max-w-3xl mx-auto mt-20 body-text">
-                <p data-scroll="reveal-up">For my brain, turning a constraint into an opportunity involves naming all of the basics about your present reality, or assumptions about that reality, then ideating around each of those isolated elements. It's a type of lateral thinking – what's the opposite of the present reality or current design idea, or something approaching the opposite idea? For example:</p>
-                <ul class="list-disc pl-8 mt-6 space-y-2 text-ink/80" data-scroll="reveal-up">
-                    <li>My present reality/idea: vertical 11 x 17 poster, "voice on the job"</li>
-                    <li>Observation about the present reality: all text is on one poster</li>
-                    <li>The opposite: each word on one poster</li>
-                    <li>The opposite: horizontal poster</li>
-                    <li>The opposite: different poster size – tile sheets together, try 18 x 24, try 8.5 x 11, try painting on a refrigerator box or sheet</li>
-                </ul>
-            </article>
-        </section>
-
-        <!-- ===== 05 MATERIALITY ===== -->
-        <section class="py-24 md:py-40 px-6 lg:px-12" aria-labelledby="materiality-heading">
-            <article class="max-w-4xl mx-auto">
-                <h2 id="materiality-heading" class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8" data-scroll="parallax">Considering the Materiality of Posters</h2>
-            </article>
-
-            <template x-for="img in images.filter(i => i.id === 6)" :key="img.id">
-                <figure class="full-bleed-figure relative overflow-visible">
+            <!-- Image 1: Terrence -->
+            <template x-for="img in images.filter(i => i.id === 1)" :key="img.id">
+                <figure class="full-bleed-figure relative overflow-visible mb-12">
                     <div class="relative w-full" x-data="{ loaded: false }" x-intersect:enter.once="loaded = true">
                         <img :src="img.src" :alt="img.alt" class="w-full h-auto transition-opacity duration-700 block" :class="loaded ? 'opacity-100' : 'opacity-0'" loading="lazy" decoding="async">
                         <template x-for="hotspot in img.hotspots" :key="hotspot.id">
@@ -255,59 +134,129 @@
                     <figcaption class="text-center text-sm text-warm-gray py-3 px-6" x-show="img.credit" x-text="img.credit"></figcaption>
                 </figure>
             </template>
-        </section>
 
-        <!-- ===== 06 MEDIA FLOW ===== -->
-        <section class="py-24 md:py-40 px-6 lg:px-12" aria-labelledby="media-heading">
-            <article class="max-w-4xl mx-auto">
-                <h2 id="media-heading" class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8" data-scroll="slide-left">Considering Media Flow</h2>
-                <div class="body-text space-y-8 mb-16">
-                    <p data-scroll="slide-left">We learned very quickly that in Kansas City, significantly more people would "see the protest" online afterwards, than would see it live and in person. So, how legible and understandable are the messages when photographed and re-used in newspapers, the web, and tv? Contemporary media, and social media in particular, provide the potential for the "mediated protest".</p>
-                </div>
-            </article>
+            <!-- Terrence Wise quote -->
+            <section class="py-16 md:py-24 px-6" aria-label="Quote from Terrence Wise">
+                <blockquote class="max-w-4xl mx-auto pl-8 md:pl-12 border-l-8 border-protest-red" data-scroll="scale">
+                    <p class="quote-text text-3xl md:text-4xl lg:text-5xl text-ink leading-tight">&ldquo;...Some of the most powerful imaging is our shirts. When people see the Stand Up KC shirt coming around the corner, walking into workplaces, it immediately catches their eye&hellip;&rdquo;</p>
+                    <footer><cite class="block mt-8 text-lg md:text-xl text-warm-gray not-italic tracking-widest uppercase">– Terrence Wise, Stand Up KC worker-leader</cite></footer>
+                </blockquote>
+            </section>
 
-            <template x-for="img in images.filter(i => i.id === 7)" :key="img.id">
-                <figure class="full-bleed-figure relative overflow-visible">
-                    <div class="relative w-full" x-data="{ loaded: false }" x-intersect:enter.once="loaded = true">
-                        <img :src="img.src" :alt="img.alt" class="w-full h-auto transition-opacity duration-700 block" :class="loaded ? 'opacity-100' : 'opacity-0'" loading="lazy" decoding="async">
-                        <template x-for="hotspot in img.hotspots" :key="hotspot.id">
-                            <button class="hotspot-marker" :style="`left: ${hotspot.x}%; top: ${hotspot.y}%`" :aria-label="`View details: ${hotspot.label}`" @click="openHotspot(img, hotspot, $event)" @keydown.enter="openHotspot(img, hotspot, $event)" @keydown.space.prevent="openHotspot(img, hotspot, $event)">
-                                <span class="hotspot-dot" aria-hidden="true"></span>
-                            </button>
-                        </template>
+            <!-- ===== 02 CONSIDERING CONTEXT ===== -->
+            <section class="py-24 md:py-40 px-6 lg:px-12" aria-labelledby="context-heading">
+                <article class="max-w-4xl mx-auto">
+                    <h2 id="context-heading" class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8" data-scroll="slide-left">Considering Context</h2>
+                    <div class="body-text space-y-8 mb-12">
+                        <p data-scroll="slide-left">Understanding the context in which your work sits is incredibly important for any designer, and is arguably more critical when going out into the street with messages that could improve the circumstances of your life.</p>
                     </div>
-                </figure>
-            </template>
-        </section>
+                </article>
 
-        <!-- ===== 07 PRINT TO DIGITAL ===== -->
-        <section class="py-24 md:py-40 px-6 lg:px-12" aria-labelledby="digital-heading">
-            <article class="max-w-4xl mx-auto">
-                <h2 id="digital-heading" class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8" data-scroll="scale">From Print to Digital</h2>
-            </article>
+                <template x-for="img in images.filter(i => i.id === 2)" :key="img.id">
+                    <figure class="full-bleed-figure relative overflow-visible">
+                        <div class="relative w-full" x-data="{ loaded: false }" x-intersect:enter.once="loaded = true">
+                            <img :src="img.src" :alt="img.alt" class="w-full h-auto transition-opacity duration-700 block" :class="loaded ? 'opacity-100' : 'opacity-0'" loading="lazy" decoding="async">
+                            <template x-for="hotspot in img.hotspots" :key="hotspot.id">
+                                <button class="hotspot-marker" :style="`left: ${hotspot.x}%; top: ${hotspot.y}%`" :aria-label="`View details: ${hotspot.label}`" @click="openHotspot(img, hotspot, $event)" @keydown.enter="openHotspot(img, hotspot, $event)" @keydown.space.prevent="openHotspot(img, hotspot, $event)">
+                                    <span class="hotspot-dot" aria-hidden="true"></span>
+                                </button>
+                            </template>
+                        </div>
+                    </figure>
+                </template>
+            </section>
 
-            <template x-for="img in images.filter(i => i.id === 11)" :key="img.id">
-                <figure class="full-bleed-figure relative overflow-visible">
-                    <div class="relative w-full" x-data="{ loaded: false }" x-intersect:enter.once="loaded = true">
-                        <img :src="img.src" :alt="img.alt" class="w-full h-auto transition-opacity duration-700 block" :class="loaded ? 'opacity-100' : 'opacity-0'" loading="lazy" decoding="async">
-                        <template x-for="hotspot in img.hotspots" :key="hotspot.id">
-                            <button class="hotspot-marker" :style="`left: ${hotspot.x}%; top: ${hotspot.y}%`" :aria-label="`View details: ${hotspot.label}`" @click="openHotspot(img, hotspot, $event)" @keydown.enter="openHotspot(img, hotspot, $event)" @keydown.space.prevent="openHotspot(img, hotspot, $event)">
-                                <span class="hotspot-dot" aria-hidden="true"></span>
-                            </button>
-                        </template>
+            <!-- ===== 03 CONCISE MESSAGING ===== -->
+            <section class="py-24 md:py-40 px-6 lg:px-12" aria-labelledby="messaging-heading">
+                <article class="max-w-4xl mx-auto">
+                    <h2 id="messaging-heading" class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8" data-scroll="dramatic">Concise Messaging</h2>
+                    <div class="body-text space-y-8 mb-16">
+                        <p data-scroll="dramatic">Virtually inseparable from the issue of context is the need to create the most meaningfully precise, concise message possible.</p>
                     </div>
-                </figure>
-            </template>
-        </section>
+                </article>
 
-        <!-- ===== 08 MULTIPLE MESSAGES ===== -->
-        <section class="py-24 md:py-40 px-6 lg:px-12" aria-labelledby="multiple-heading">
-            <article class="max-w-4xl mx-auto">
-                <h2 id="multiple-heading" class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8" data-scroll="blur-fade">Multiple Messages at an Action</h2>
-            </article>
+                <div class="space-y-24">
+                    <template x-for="img in images.filter(i => i.id === 3)" :key="img.id">
+                        <figure class="full-bleed-figure relative overflow-visible">
+                            <div class="relative w-full" x-data="{ loaded: false }" x-intersect:enter.once="loaded = true">
+                                <img :src="img.src" :alt="img.alt" class="w-full h-auto transition-opacity duration-700 block" :class="loaded ? 'opacity-100' : 'opacity-0'" loading="lazy" decoding="async">
+                                <template x-for="hotspot in img.hotspots" :key="hotspot.id">
+                                    <button class="hotspot-marker" :style="`left: ${hotspot.x}%; top: ${hotspot.y}%`" :aria-label="`View details: ${hotspot.label}`" @click="openHotspot(img, hotspot, $event)" @keydown.enter="openHotspot(img, hotspot, $event)" @keydown.space.prevent="openHotspot(img, hotspot, $event)">
+                                        <span class="hotspot-dot" aria-hidden="true"></span>
+                                    </button>
+                                </template>
+                            </div>
+                        </figure>
+                    </template>
 
-            <div class="space-y-24">
-                <template x-for="img in images.filter(i => i.id === 8)" :key="img.id">
+                    <template x-for="img in images.filter(i => i.id === 4)" :key="img.id">
+                        <figure class="full-bleed-figure relative overflow-visible">
+                            <div class="relative w-full" x-data="{ loaded: false }" x-intersect:enter.once="loaded = true">
+                                <img :src="img.src" :alt="img.alt" class="w-full h-auto transition-opacity duration-700 block" :class="loaded ? 'opacity-100' : 'opacity-0'" loading="lazy" decoding="async">
+                                <template x-for="hotspot in img.hotspots" :key="hotspot.id">
+                                    <button class="hotspot-marker" :style="`left: ${hotspot.x}%; top: ${hotspot.y}%`" :aria-label="`View details: ${hotspot.label}`" @click="openHotspot(img, hotspot, $event)" @keydown.enter="openHotspot(img, hotspot, $event)" @keydown.space.prevent="openHotspot(img, hotspot, $event)">
+                                        <span class="hotspot-dot" aria-hidden="true"></span>
+                                    </button>
+                                </template>
+                            </div>
+                        </figure>
+                    </template>
+                </div>
+            </section>
+
+            <!-- ===== 04 PHYSICAL CONSTRAINTS ===== -->
+            <section class="py-24 md:py-40 px-6 lg:px-12" aria-labelledby="constraints-heading">
+                <article class="max-w-4xl mx-auto">
+                    <h2 id="constraints-heading" class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8" data-scroll="reveal-up">Honor and/or Exploit Physical Constraints</h2>
+                </article>
+
+                <div class="space-y-24">
+                    <template x-for="img in images.filter(i => i.id === 5)" :key="img.id">
+                        <figure class="full-bleed-figure relative overflow-visible">
+                            <div class="relative w-full" x-data="{ loaded: false }" x-intersect:enter.once="loaded = true">
+                                <img :src="img.src" :alt="img.alt" class="w-full h-auto transition-opacity duration-700 block" :class="loaded ? 'opacity-100' : 'opacity-0'" loading="lazy" decoding="async">
+                                <template x-for="hotspot in img.hotspots" :key="hotspot.id">
+                                    <button class="hotspot-marker" :style="`left: ${hotspot.x}%; top: ${hotspot.y}%`" :aria-label="`View details: ${hotspot.label}`" @click="openHotspot(img, hotspot, $event)" @keydown.enter="openHotspot(img, hotspot, $event)" @keydown.space.prevent="openHotspot(img, hotspot, $event)">
+                                        <span class="hotspot-dot" aria-hidden="true"></span>
+                                    </button>
+                                </template>
+                            </div>
+                        </figure>
+                    </template>
+
+                    <template x-for="img in images.filter(i => i.id === 10)" :key="img.id">
+                        <figure class="full-bleed-figure relative overflow-visible">
+                            <div class="relative w-full" x-data="{ loaded: false }" x-intersect:enter.once="loaded = true">
+                                <img :src="img.src" :alt="img.alt" class="w-full h-auto transition-opacity duration-700 block" :class="loaded ? 'opacity-100' : 'opacity-0'" loading="lazy" decoding="async">
+                                <template x-for="hotspot in img.hotspots" :key="hotspot.id">
+                                    <button class="hotspot-marker" :style="`left: ${hotspot.x}%; top: ${hotspot.y}%`" :aria-label="`View details: ${hotspot.label}`" @click="openHotspot(img, hotspot, $event)" @keydown.enter="openHotspot(img, hotspot, $event)" @keydown.space.prevent="openHotspot(img, hotspot, $event)">
+                                        <span class="hotspot-dot" aria-hidden="true"></span>
+                                    </button>
+                                </template>
+                            </div>
+                        </figure>
+                    </template>
+                </div>
+
+                <article class="max-w-3xl mx-auto mt-20 body-text">
+                    <p data-scroll="reveal-up">For my brain, turning a constraint into an opportunity involves naming all of the basics about your present reality, or assumptions about that reality, then ideating around each of those isolated elements. It's a type of lateral thinking – what's the opposite of the present reality or current design idea, or something approaching the opposite idea? For example:</p>
+                    <ul class="list-disc pl-8 mt-6 space-y-2 text-ink/80" data-scroll="reveal-up">
+                        <li>My present reality/idea: vertical 11 x 17 poster, "voice on the job"</li>
+                        <li>Observation about the present reality: all text is on one poster</li>
+                        <li>The opposite: each word on one poster</li>
+                        <li>The opposite: horizontal poster</li>
+                        <li>The opposite: different poster size – tile sheets together, try 18 x 24, try 8.5 x 11, try painting on a refrigerator box or sheet</li>
+                    </ul>
+                </article>
+            </section>
+
+            <!-- ===== 05 MATERIALITY ===== -->
+            <section class="py-24 md:py-40 px-6 lg:px-12" aria-labelledby="materiality-heading">
+                <article class="max-w-4xl mx-auto">
+                    <h2 id="materiality-heading" class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8" data-scroll="parallax">Considering the Materiality of Posters</h2>
+                </article>
+
+                <template x-for="img in images.filter(i => i.id === 6)" :key="img.id">
                     <figure class="full-bleed-figure relative overflow-visible">
                         <div class="relative w-full" x-data="{ loaded: false }" x-intersect:enter.once="loaded = true">
                             <img :src="img.src" :alt="img.alt" class="w-full h-auto transition-opacity duration-700 block" :class="loaded ? 'opacity-100' : 'opacity-0'" loading="lazy" decoding="async">
@@ -320,8 +269,18 @@
                         <figcaption class="text-center text-sm text-warm-gray py-3 px-6" x-show="img.credit" x-text="img.credit"></figcaption>
                     </figure>
                 </template>
+            </section>
 
-                <template x-for="img in images.filter(i => i.id === 9)" :key="img.id">
+            <!-- ===== 06 MEDIA FLOW ===== -->
+            <section class="py-24 md:py-40 px-6 lg:px-12" aria-labelledby="media-heading">
+                <article class="max-w-4xl mx-auto">
+                    <h2 id="media-heading" class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8" data-scroll="slide-left">Considering Media Flow</h2>
+                    <div class="body-text space-y-8 mb-16">
+                        <p data-scroll="slide-left">We learned very quickly that in Kansas City, significantly more people would "see the protest" online afterwards, than would see it live and in person. So, how legible and understandable are the messages when photographed and re-used in newspapers, the web, and tv? Contemporary media, and social media in particular, provide the potential for the "mediated protest".</p>
+                    </div>
+                </article>
+
+                <template x-for="img in images.filter(i => i.id === 7)" :key="img.id">
                     <figure class="full-bleed-figure relative overflow-visible">
                         <div class="relative w-full" x-data="{ loaded: false }" x-intersect:enter.once="loaded = true">
                             <img :src="img.src" :alt="img.alt" class="w-full h-auto transition-opacity duration-700 block" :class="loaded ? 'opacity-100' : 'opacity-0'" loading="lazy" decoding="async">
@@ -333,8 +292,15 @@
                         </div>
                     </figure>
                 </template>
+            </section>
 
-                <template x-for="img in images.filter(i => i.id === 12)" :key="img.id">
+            <!-- ===== 07 PRINT TO DIGITAL ===== -->
+            <section class="py-24 md:py-40 px-6 lg:px-12" aria-labelledby="digital-heading">
+                <article class="max-w-4xl mx-auto">
+                    <h2 id="digital-heading" class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8" data-scroll="scale">From Print to Digital</h2>
+                </article>
+
+                <template x-for="img in images.filter(i => i.id === 11)" :key="img.id">
                     <figure class="full-bleed-figure relative overflow-visible">
                         <div class="relative w-full" x-data="{ loaded: false }" x-intersect:enter.once="loaded = true">
                             <img :src="img.src" :alt="img.alt" class="w-full h-auto transition-opacity duration-700 block" :class="loaded ? 'opacity-100' : 'opacity-0'" loading="lazy" decoding="async">
@@ -344,165 +310,214 @@
                                 </button>
                             </template>
                         </div>
-                        <figcaption class="text-center text-sm text-warm-gray py-3 px-6" x-show="img.credit" x-text="img.credit"></figcaption>
                     </figure>
                 </template>
-            </div>
-        </section>
+            </section>
 
-        <!-- ===== 09 PARTICIPATORY ELEMENTS ===== -->
-        <section class="py-24 md:py-40 px-6 lg:px-12" aria-labelledby="participatory-heading">
-            <article class="max-w-4xl mx-auto">
-                <h2 id="participatory-heading" class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8" data-scroll="fade-up">Participatory Elements</h2>
-                <div class="body-text space-y-8 mb-16">
-                    <p data-scroll="fade-up">Stand Up KC organizers knew the power of personal storytelling to win people to the movement, and I knew the benefits of participatory design to create ownership and empowerment for participants.</p>
+            <!-- ===== 08 MULTIPLE MESSAGES ===== -->
+            <section class="py-24 md:py-40 px-6 lg:px-12" aria-labelledby="multiple-heading">
+                <article class="max-w-4xl mx-auto">
+                    <h2 id="multiple-heading" class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8" data-scroll="blur-fade">Multiple Messages at an Action</h2>
+                </article>
+
+                <div class="space-y-24">
+                    <template x-for="img in images.filter(i => i.id === 8)" :key="img.id">
+                        <figure class="full-bleed-figure relative overflow-visible">
+                            <div class="relative w-full" x-data="{ loaded: false }" x-intersect:enter.once="loaded = true">
+                                <img :src="img.src" :alt="img.alt" class="w-full h-auto transition-opacity duration-700 block" :class="loaded ? 'opacity-100' : 'opacity-0'" loading="lazy" decoding="async">
+                                <template x-for="hotspot in img.hotspots" :key="hotspot.id">
+                                    <button class="hotspot-marker" :style="`left: ${hotspot.x}%; top: ${hotspot.y}%`" :aria-label="`View details: ${hotspot.label}`" @click="openHotspot(img, hotspot, $event)" @keydown.enter="openHotspot(img, hotspot, $event)" @keydown.space.prevent="openHotspot(img, hotspot, $event)">
+                                        <span class="hotspot-dot" aria-hidden="true"></span>
+                                    </button>
+                                </template>
+                            </div>
+                            <figcaption class="text-center text-sm text-warm-gray py-3 px-6" x-show="img.credit" x-text="img.credit"></figcaption>
+                        </figure>
+                    </template>
+
+                    <template x-for="img in images.filter(i => i.id === 9)" :key="img.id">
+                        <figure class="full-bleed-figure relative overflow-visible">
+                            <div class="relative w-full" x-data="{ loaded: false }" x-intersect:enter.once="loaded = true">
+                                <img :src="img.src" :alt="img.alt" class="w-full h-auto transition-opacity duration-700 block" :class="loaded ? 'opacity-100' : 'opacity-0'" loading="lazy" decoding="async">
+                                <template x-for="hotspot in img.hotspots" :key="hotspot.id">
+                                    <button class="hotspot-marker" :style="`left: ${hotspot.x}%; top: ${hotspot.y}%`" :aria-label="`View details: ${hotspot.label}`" @click="openHotspot(img, hotspot, $event)" @keydown.enter="openHotspot(img, hotspot, $event)" @keydown.space.prevent="openHotspot(img, hotspot, $event)">
+                                        <span class="hotspot-dot" aria-hidden="true"></span>
+                                    </button>
+                                </template>
+                            </div>
+                        </figure>
+                    </template>
+
+                    <template x-for="img in images.filter(i => i.id === 12)" :key="img.id">
+                        <figure class="full-bleed-figure relative overflow-visible">
+                            <div class="relative w-full" x-data="{ loaded: false }" x-intersect:enter.once="loaded = true">
+                                <img :src="img.src" :alt="img.alt" class="w-full h-auto transition-opacity duration-700 block" :class="loaded ? 'opacity-100' : 'opacity-0'" loading="lazy" decoding="async">
+                                <template x-for="hotspot in img.hotspots" :key="hotspot.id">
+                                    <button class="hotspot-marker" :style="`left: ${hotspot.x}%; top: ${hotspot.y}%`" :aria-label="`View details: ${hotspot.label}`" @click="openHotspot(img, hotspot, $event)" @keydown.enter="openHotspot(img, hotspot, $event)" @keydown.space.prevent="openHotspot(img, hotspot, $event)">
+                                        <span class="hotspot-dot" aria-hidden="true"></span>
+                                    </button>
+                                </template>
+                            </div>
+                            <figcaption class="text-center text-sm text-warm-gray py-3 px-6" x-show="img.credit" x-text="img.credit"></figcaption>
+                        </figure>
+                    </template>
                 </div>
-            </article>
+            </section>
 
-            <div class="space-y-24">
-                <template x-for="img in images.filter(i => i.id === 13)" :key="img.id">
-                    <figure class="full-bleed-figure relative overflow-visible">
-                        <div class="relative w-full" x-data="{ loaded: false }" x-intersect:enter.once="loaded = true">
-                            <img :src="img.src" :alt="img.alt" class="w-full h-auto transition-opacity duration-700 block" :class="loaded ? 'opacity-100' : 'opacity-0'" loading="lazy" decoding="async">
-                            <template x-for="hotspot in img.hotspots" :key="hotspot.id">
-                                <button class="hotspot-marker" :style="`left: ${hotspot.x}%; top: ${hotspot.y}%`" :aria-label="`View details: ${hotspot.label}`" @click="openHotspot(img, hotspot, $event)" @keydown.enter="openHotspot(img, hotspot, $event)" @keydown.space.prevent="openHotspot(img, hotspot, $event)">
-                                    <span class="hotspot-dot" aria-hidden="true"></span>
-                                </button>
-                            </template>
-                        </div>
-                    </figure>
-                </template>
+            <!-- ===== 09 PARTICIPATORY ELEMENTS ===== -->
+            <section class="py-24 md:py-40 px-6 lg:px-12" aria-labelledby="participatory-heading">
+                <article class="max-w-4xl mx-auto">
+                    <h2 id="participatory-heading" class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8" data-scroll="fade-up">Participatory Elements</h2>
+                    <div class="body-text space-y-8 mb-16">
+                        <p data-scroll="fade-up">Stand Up KC organizers knew the power of personal storytelling to win people to the movement, and I knew the benefits of participatory design to create ownership and empowerment for participants.</p>
+                    </div>
+                </article>
 
-                <template x-for="img in images.filter(i => i.id === 14)" :key="img.id">
-                    <figure class="full-bleed-figure relative overflow-visible">
-                        <div class="relative w-full" x-data="{ loaded: false }" x-intersect:enter.once="loaded = true">
-                            <img :src="img.src" :alt="img.alt" class="w-full h-auto transition-opacity duration-700 block" :class="loaded ? 'opacity-100' : 'opacity-0'" loading="lazy" decoding="async">
-                            <template x-for="hotspot in img.hotspots" :key="hotspot.id">
-                                <button class="hotspot-marker" :style="`left: ${hotspot.x}%; top: ${hotspot.y}%`" :aria-label="`View details: ${hotspot.label}`" @click="openHotspot(img, hotspot, $event)" @keydown.enter="openHotspot(img, hotspot, $event)" @keydown.space.prevent="openHotspot(img, hotspot, $event)">
-                                    <span class="hotspot-dot" aria-hidden="true"></span>
-                                </button>
-                            </template>
-                        </div>
-                    </figure>
-                </template>
-            </div>
-        </section>
+                <div class="space-y-24">
+                    <template x-for="img in images.filter(i => i.id === 13)" :key="img.id">
+                        <figure class="full-bleed-figure relative overflow-visible">
+                            <div class="relative w-full" x-data="{ loaded: false }" x-intersect:enter.once="loaded = true">
+                                <img :src="img.src" :alt="img.alt" class="w-full h-auto transition-opacity duration-700 block" :class="loaded ? 'opacity-100' : 'opacity-0'" loading="lazy" decoding="async">
+                                <template x-for="hotspot in img.hotspots" :key="hotspot.id">
+                                    <button class="hotspot-marker" :style="`left: ${hotspot.x}%; top: ${hotspot.y}%`" :aria-label="`View details: ${hotspot.label}`" @click="openHotspot(img, hotspot, $event)" @keydown.enter="openHotspot(img, hotspot, $event)" @keydown.space.prevent="openHotspot(img, hotspot, $event)">
+                                        <span class="hotspot-dot" aria-hidden="true"></span>
+                                    </button>
+                                </template>
+                            </div>
+                        </figure>
+                    </template>
 
-        <!-- ===== 10 IMAGERY ===== -->
-        <section class="py-24 md:py-40 px-6 lg:px-12" aria-labelledby="imagery-heading">
-            <article class="max-w-4xl mx-auto">
-                <h2 id="imagery-heading" class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8" data-scroll="dramatic">Imagery</h2>
-                <div class="body-text space-y-8 mb-16">
-                    <p data-scroll="dramatic">While I love artful social and political posters as much as any other graphic designer, many that make it into exhibitions or books would not communicate well in the streets. A careful balance between message, concept, and speed of communication needs to be achieved. I never want to insult my audience's intelligence, but I also know that these posters are only going to get about a two-second look, if I'm lucky.</p>
+                    <template x-for="img in images.filter(i => i.id === 14)" :key="img.id">
+                        <figure class="full-bleed-figure relative overflow-visible">
+                            <div class="relative w-full" x-data="{ loaded: false }" x-intersect:enter.once="loaded = true">
+                                <img :src="img.src" :alt="img.alt" class="w-full h-auto transition-opacity duration-700 block" :class="loaded ? 'opacity-100' : 'opacity-0'" loading="lazy" decoding="async">
+                                <template x-for="hotspot in img.hotspots" :key="hotspot.id">
+                                    <button class="hotspot-marker" :style="`left: ${hotspot.x}%; top: ${hotspot.y}%`" :aria-label="`View details: ${hotspot.label}`" @click="openHotspot(img, hotspot, $event)" @keydown.enter="openHotspot(img, hotspot, $event)" @keydown.space.prevent="openHotspot(img, hotspot, $event)">
+                                        <span class="hotspot-dot" aria-hidden="true"></span>
+                                    </button>
+                                </template>
+                            </div>
+                        </figure>
+                    </template>
                 </div>
-            </article>
+            </section>
 
-            <div class="space-y-24">
-                <template x-for="img in images.filter(i => i.id === 15)" :key="img.id">
-                    <figure class="full-bleed-figure relative overflow-visible">
-                        <div class="relative w-full" x-data="{ loaded: false }" x-intersect:enter.once="loaded = true">
-                            <img :src="img.src" :alt="img.alt" class="w-full h-auto transition-opacity duration-700 block" :class="loaded ? 'opacity-100' : 'opacity-0'" loading="lazy" decoding="async">
-                            <template x-for="hotspot in img.hotspots" :key="hotspot.id">
-                                <button class="hotspot-marker" :style="`left: ${hotspot.x}%; top: ${hotspot.y}%`" :aria-label="`View details: ${hotspot.label}`" @click="openHotspot(img, hotspot, $event)" @keydown.enter="openHotspot(img, hotspot, $event)" @keydown.space.prevent="openHotspot(img, hotspot, $event)">
-                                    <span class="hotspot-dot" aria-hidden="true"></span>
-                                </button>
-                            </template>
-                        </div>
-                    </figure>
-                </template>
+            <!-- ===== 10 IMAGERY ===== -->
+            <section class="py-24 md:py-40 px-6 lg:px-12" aria-labelledby="imagery-heading">
+                <article class="max-w-4xl mx-auto">
+                    <h2 id="imagery-heading" class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8" data-scroll="dramatic">Imagery</h2>
+                    <div class="body-text space-y-8 mb-16">
+                        <p data-scroll="dramatic">While I love artful social and political posters as much as any other graphic designer, many that make it into exhibitions or books would not communicate well in the streets. A careful balance between message, concept, and speed of communication needs to be achieved. I never want to insult my audience's intelligence, but I also know that these posters are only going to get about a two-second look, if I'm lucky.</p>
+                    </div>
+                </article>
 
-                <template x-for="img in images.filter(i => i.id === 16)" :key="img.id">
-                    <figure class="full-bleed-figure relative overflow-visible">
-                        <div class="relative w-full" x-data="{ loaded: false }" x-intersect:enter.once="loaded = true">
-                            <img :src="img.src" :alt="img.alt" class="w-full h-auto transition-opacity duration-700 block" :class="loaded ? 'opacity-100' : 'opacity-0'" loading="lazy" decoding="async">
-                            <template x-for="hotspot in img.hotspots" :key="hotspot.id">
-                                <button class="hotspot-marker" :style="`left: ${hotspot.x}%; top: ${hotspot.y}%`" :aria-label="`View details: ${hotspot.label}`" @click="openHotspot(img, hotspot, $event)" @keydown.enter="openHotspot(img, hotspot, $event)" @keydown.space.prevent="openHotspot(img, hotspot, $event)">
-                                    <span class="hotspot-dot" aria-hidden="true"></span>
-                                </button>
-                            </template>
-                        </div>
-                        <figcaption class="text-center text-sm text-warm-gray py-3 px-6" x-show="img.credit" x-text="img.credit"></figcaption>
-                    </figure>
-                </template>
-            </div>
-        </section>
+                <div class="space-y-24">
+                    <template x-for="img in images.filter(i => i.id === 15)" :key="img.id">
+                        <figure class="full-bleed-figure relative overflow-visible">
+                            <div class="relative w-full" x-data="{ loaded: false }" x-intersect:enter.once="loaded = true">
+                                <img :src="img.src" :alt="img.alt" class="w-full h-auto transition-opacity duration-700 block" :class="loaded ? 'opacity-100' : 'opacity-0'" loading="lazy" decoding="async">
+                                <template x-for="hotspot in img.hotspots" :key="hotspot.id">
+                                    <button class="hotspot-marker" :style="`left: ${hotspot.x}%; top: ${hotspot.y}%`" :aria-label="`View details: ${hotspot.label}`" @click="openHotspot(img, hotspot, $event)" @keydown.enter="openHotspot(img, hotspot, $event)" @keydown.space.prevent="openHotspot(img, hotspot, $event)">
+                                        <span class="hotspot-dot" aria-hidden="true"></span>
+                                    </button>
+                                </template>
+                            </div>
+                        </figure>
+                    </template>
 
-        <!-- ===== CONCLUSION ===== -->
-        <section class="py-24 md:py-40 px-6 lg:px-12" aria-labelledby="conclusion-heading">
-            <article class="max-w-3xl mx-auto">
-                <h2 id="conclusion-heading" class="sr-only">Conclusion</h2>
-                <div class="body-text space-y-8">
-                    <p data-scroll="slide-left">This work has been the highlight of my career so far, and reflecting on it feels like this group of tireless and determined workers is taking their place in history, with me graphically amplifying, cohering, and supporting them along the way. A thoughtful, strategic design approach matters because it allows grassroots organizations to leverage the power of graphic design to clarify, maximize, and legitimize their messages. Well-planned and -organized protests take advantage of the moment, creating ripples through media beyond their initial presence in the street. Graphic design has been a force-multiplier for this movement and can do the same for any other.</p>
-                    <p data-scroll="slide-left">Designing for dissent matters now as much as it ever has – maybe more – as our world hurtles toward increasing chaos and injustice on nearly every front. For those looking to contribute their creative skills in similar ways, I will suggest what I require of my students – find a community or cause you care deeply about, and is values-aligned. Go to a meeting or event, attend a protest, introduce yourself, and start conversations. We are all humans first and foremost, and progress is built out of our relationships. Be humble, curious, establish trust, then contribute your unique creative skills to further their cause. Build from there. All resistance movements need that force-multiplier of design, and deserve that kind of creative care way more than international corporations. As you start down that path, consider this wisdom from Assata Shakur:</p>
+                    <template x-for="img in images.filter(i => i.id === 16)" :key="img.id">
+                        <figure class="full-bleed-figure relative overflow-visible">
+                            <div class="relative w-full" x-data="{ loaded: false }" x-intersect:enter.once="loaded = true">
+                                <img :src="img.src" :alt="img.alt" class="w-full h-auto transition-opacity duration-700 block" :class="loaded ? 'opacity-100' : 'opacity-0'" loading="lazy" decoding="async">
+                                <template x-for="hotspot in img.hotspots" :key="hotspot.id">
+                                    <button class="hotspot-marker" :style="`left: ${hotspot.x}%; top: ${hotspot.y}%`" :aria-label="`View details: ${hotspot.label}`" @click="openHotspot(img, hotspot, $event)" @keydown.enter="openHotspot(img, hotspot, $event)" @keydown.space.prevent="openHotspot(img, hotspot, $event)">
+                                        <span class="hotspot-dot" aria-hidden="true"></span>
+                                    </button>
+                                </template>
+                            </div>
+                            <figcaption class="text-center text-sm text-warm-gray py-3 px-6" x-show="img.credit" x-text="img.credit"></figcaption>
+                        </figure>
+                    </template>
                 </div>
-            </article>
-        </section>
+            </section>
 
-        <!-- Assata Shakur quote -->
-        <section class="py-16 md:py-24 px-6" aria-label="Quote from Assata Shakur">
-            <blockquote class="max-w-4xl mx-auto pl-8 md:pl-12 border-l-8 border-protest-red" data-scroll="scale">
-                <p class="quote-text text-3xl md:text-4xl lg:text-5xl text-ink leading-tight">&ldquo;It is our duty to fight for our freedom. It is our duty to win. We must love each other and support each other. We have nothing to lose but our chains.&rdquo;</p>
-                <footer><cite class="block mt-8 text-lg md:text-xl text-warm-gray not-italic tracking-widest uppercase">– Assata Shakur</cite></footer>
-            </blockquote>
-        </section>
+            <!-- ===== CONCLUSION ===== -->
+            <section class="py-24 md:py-40 px-6 lg:px-12" aria-labelledby="conclusion-heading">
+                <article class="max-w-3xl mx-auto">
+                    <h2 id="conclusion-heading" class="sr-only">Conclusion</h2>
+                    <div class="body-text space-y-8">
+                        <p data-scroll="slide-left">This work has been the highlight of my career so far, and reflecting on it feels like this group of tireless and determined workers is taking their place in history, with me graphically amplifying, cohering, and supporting them along the way. A thoughtful, strategic design approach matters because it allows grassroots organizations to leverage the power of graphic design to clarify, maximize, and legitimize their messages. Well-planned and -organized protests take advantage of the moment, creating ripples through media beyond their initial presence in the street. Graphic design has been a force-multiplier for this movement and can do the same for any other.</p>
+                        <p data-scroll="slide-left">Designing for dissent matters now as much as it ever has – maybe more – as our world hurtles toward increasing chaos and injustice on nearly every front. For those looking to contribute their creative skills in similar ways, I will suggest what I require of my students – find a community or cause you care deeply about, and is values-aligned. Go to a meeting or event, attend a protest, introduce yourself, and start conversations. We are all humans first and foremost, and progress is built out of our relationships. Be humble, curious, establish trust, then contribute your unique creative skills to further their cause. Build from there. All resistance movements need that force-multiplier of design, and deserve that kind of creative care way more than international corporations. As you start down that path, consider this wisdom from Assata Shakur:</p>
+                    </div>
+                </article>
+            </section>
 
-        <!-- ===== ABOUT ===== -->
-        <section class="py-24 md:py-40 px-6 lg:px-12" aria-labelledby="about-heading">
-            <article class="max-w-3xl mx-auto">
-                <h2 id="about-heading" class="heading-display text-4xl md:text-5xl lg:text-6xl mb-8" data-scroll="fade-up">About the Designer</h2>
-                <div class="body-text space-y-8">
-                    <p data-scroll="fade-up">tyler galloway is a Professor and Chair of Graphic Design at Kansas City Art Institute. With a BFA in graphic design from Missouri State University and an MGD from North Carolina State University his studio practice as "the new programme"  focuses on design for social change and participatory design processes. Working primarily with activist-oriented non-profits, he seeks to communicate creatively and strategically from the bottom-up, focusing on fundamental human needs and rights, reflecting community voices as much as possible, and collaborating with other working-class people who share his values. His work has been published in the books "The Design of Dissent", "Posters for the Planet", "Graphis Poster Annual", "Reproduce and Revolt", in Communication Arts, and the Turkish socio-political design magazine "No Tasarim". But perhaps just as important, tyler loves riding bikes, punk rock, vegan cookies and being a husband and dad.</p>
-                    <p data-scroll="fade-up"><a href="https://thenewprogramme.net" class="text-protest-red hover:underline" target="_blank" rel="noopener noreferrer" aria-label="Visit the new programme studio website (opens in new tab)">thenewprogramme.net</a></p>
+            <!-- Assata Shakur quote -->
+            <section class="py-16 md:py-24 px-6" aria-label="Quote from Assata Shakur">
+                <blockquote class="max-w-4xl mx-auto pl-8 md:pl-12 border-l-8 border-protest-red" data-scroll="scale">
+                    <p class="quote-text text-3xl md:text-4xl lg:text-5xl text-ink leading-tight">&ldquo;It is our duty to fight for our freedom. It is our duty to win. We must love each other and support each other. We have nothing to lose but our chains.&rdquo;</p>
+                    <footer><cite class="block mt-8 text-lg md:text-xl text-warm-gray not-italic tracking-widest uppercase">– Assata Shakur</cite></footer>
+                </blockquote>
+            </section>
+
+            <!-- ===== ABOUT ===== -->
+            <section class="py-24 md:py-40 px-6 lg:px-12" aria-labelledby="about-heading">
+                <article class="max-w-3xl mx-auto">
+                    <h2 id="about-heading" class="heading-display text-4xl md:text-5xl lg:text-6xl mb-8" data-scroll="fade-up">About the Designer</h2>
+                    <div class="body-text space-y-8">
+                        <p data-scroll="fade-up">tyler galloway is a Professor and Chair of Graphic Design at Kansas City Art Institute. With a BFA in graphic design from Missouri State University and an MGD from North Carolina State University his studio practice as "the new programme"  focuses on design for social change and participatory design processes. Working primarily with activist-oriented non-profits, he seeks to communicate creatively and strategically from the bottom-up, focusing on fundamental human needs and rights, reflecting community voices as much as possible, and collaborating with other working-class people who share his values. His work has been published in the books "The Design of Dissent", "Posters for the Planet", "Graphis Poster Annual", "Reproduce and Revolt", in Communication Arts, and the Turkish socio-political design magazine "No Tasarim". But perhaps just as important, tyler loves riding bikes, punk rock, vegan cookies and being a husband and dad.</p>
+                        <p data-scroll="fade-up"><a href="https://thenewprogramme.net" class="text-protest-red hover:underline" target="_blank" rel="noopener noreferrer" aria-label="Visit the new programme studio website (opens in new tab)">thenewprogramme.net</a></p>
+                    </div>
+                </article>
+            </section>
+
+            <!-- ===== FOOTER ===== -->
+            <div class="py-12 px-6 border-t border-ink/10 mt-12">
+                <div class="max-w-4xl mx-auto text-center text-warm-gray text-sm">
+                    <p>&copy; 2026 tyler galloway. all rights reserved.</p>
+                    <p class="mt-2">designed for the "designing for dissent" publication.</p>
                 </div>
-            </article>
-        </section>
-
-        <!-- ===== FOOTER ===== -->
-        <footer class="py-12 px-6 border-t border-ink/10 mt-12">
-            <div class="max-w-4xl mx-auto text-center text-warm-gray text-sm">
-                <p>&copy; 2026 tyler galloway. all rights reserved.</p>
-                <p class="mt-2">designed for the "designing for dissent" publication.</p>
             </div>
-        </footer>
-    </main>
+        </div>
 
-    <!-- ===== HOTSPOT POPUP ===== -->
-    <div x-show="popupOpen" x-cloak class="hotspot-overlay" @keydown.escape.window="popupOpen && closeHotspot()" @click.self="popupOpen && closeHotspot()">
-        <div class="hotspot-popup" :class="popupExpanded ? 'hotspot-popup--expanded' : 'hotspot-popup--collapsed'" :style="computedPopupStyle" role="dialog" aria-modal="true" :aria-labelledby="activeHotspot ? 'hotspot-label-' + activeHotspot.id : null" :aria-describedby="activeHotspot ? 'hotspot-desc-' + activeHotspot.id : null" x-trap="popupOpen">
-            <button class="hotspot-popup__close" @click="closeHotspot()" aria-label="Close popup">
-                <svg viewBox="0 0 24 24" width="100%" height="100%" stroke="currentColor" stroke-width="1" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-                    <line x1="0" y1="0" x2="24" y2="24" vector-effect="non-scaling-stroke" />
-                    <line x1="24" y1="0" x2="0" y2="24" vector-effect="non-scaling-stroke" />
-                </svg>
-            </button>
-            <div class="hotspot-popup__inner">
-                <div class="hotspot-popup__content">
-                    <span :id="activeHotspot ? 'hotspot-label-' + activeHotspot.id : null" class="hotspot-popup__label" x-text="activeHotspot?.label"></span>
-                    <p :id="activeHotspot ? 'hotspot-desc-' + activeHotspot.id : null" class="hotspot-popup__description" x-text="activeHotspot?.description"></p>
-                    <template x-if="activeHotspot?.audio">
-                        <div class="hotspot-audio" x-data="audioPlayer()" x-init="loadAudio(activeHotspot.audio)">
-                            <button class="hotspot-audio__btn" @click="togglePlay()" :aria-label="playing ? 'Pause audio' : 'Play audio'">
-                                <svg x-show="!playing" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                                <svg x-show="playing" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                            </button>
-                            <div class="hotspot-audio__track">
-                                <div class="hotspot-audio__bar" @mousedown="startScrub($event)" @touchstart.prevent="startScrub($event)" role="slider" :aria-valuenow="Math.round(currentTime)" :aria-valuemin="0" :aria-valuemax="Math.round(duration)" aria-label="Audio progress">
-                                    <div class="hotspot-audio__fill" :style="`width: ${progress}%`"></div>
-                                    <div class="hotspot-audio__thumb" :style="`left: ${progress}%`"></div>
-                                </div>
-                                <div class="hotspot-audio__time">
-                                    <span x-text="formatTime(currentTime)"></span>
-                                    <span class="hotspot-audio__time-sep">/</span>
-                                    <span x-text="formatTime(duration)"></span>
+        <!-- ===== HOTSPOT POPUP ===== -->
+        <div x-show="popupOpen" x-cloak class="hotspot-overlay" @keydown.escape.window="popupOpen && closeHotspot()" @click.self="popupOpen && closeHotspot()">
+            <div class="hotspot-popup" :class="popupExpanded ? 'hotspot-popup--expanded' : 'hotspot-popup--collapsed'" :style="computedPopupStyle" role="dialog" aria-modal="true" :aria-labelledby="activeHotspot ? 'hotspot-label-' + activeHotspot.id : null" :aria-describedby="activeHotspot ? 'hotspot-desc-' + activeHotspot.id : null" x-trap="popupOpen">
+                <button class="hotspot-popup__close" @click="closeHotspot()" aria-label="Close popup">
+                    <svg viewBox="0 0 24 24" width="100%" height="100%" stroke="currentColor" stroke-width="1" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                        <line x1="0" y1="0" x2="24" y2="24" vector-effect="non-scaling-stroke" />
+                        <line x1="24" y1="0" x2="0" y2="24" vector-effect="non-scaling-stroke" />
+                    </svg>
+                </button>
+                <div class="hotspot-popup__inner">
+                    <div class="hotspot-popup__content">
+                        <span :id="activeHotspot ? 'hotspot-label-' + activeHotspot.id : null" class="hotspot-popup__label" x-text="activeHotspot?.label"></span>
+                        <p :id="activeHotspot ? 'hotspot-desc-' + activeHotspot.id : null" class="hotspot-popup__description" x-text="activeHotspot?.description"></p>
+                        <template x-if="activeHotspot?.audio">
+                            <div class="hotspot-audio" x-data="audioPlayer()" x-init="loadAudio(activeHotspot.audio)">
+                                <button class="hotspot-audio__btn" @click="togglePlay()" :aria-label="playing ? 'Pause audio' : 'Play audio'">
+                                    <svg x-show="!playing" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                                    <svg x-show="playing" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                </button>
+                                <div class="hotspot-audio__track">
+                                    <div class="hotspot-audio__bar" @mousedown="startScrub($event)" @touchstart.prevent="startScrub($event)" role="slider" :aria-valuenow="Math.round(currentTime)" :aria-valuemin="0" :aria-valuemax="Math.round(duration)" aria-label="Audio progress">
+                                        <div class="hotspot-audio__fill" :style="`width: ${progress}%`"></div>
+                                        <div class="hotspot-audio__thumb" :style="`left: ${progress}%`"></div>
+                                    </div>
+                                    <div class="hotspot-audio__time">
+                                        <span x-text="formatTime(currentTime)"></span>
+                                        <span class="hotspot-audio__time-sep">/</span>
+                                        <span x-text="formatTime(duration)"></span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </template>
+                        </template>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <script src="js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/AnXh3L0/tyler-publication@main/js/app.js"></script>
+    <!-- ===== END Page Code Block ===== -->
 </body>
 </html>
