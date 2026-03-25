@@ -19,7 +19,7 @@ function protestEssay() {
                 id: 1,
                 src: 'https://cdn.jsdelivr.net/gh/AnXh3L0/tyler-publication@main/images/terrence-worker-leader.png',
                 alt: 'Stand Up KC workers in matching red shirts hold bold, coordinated protest signs at a Fight for $15 street rally',
-                credit: 'photo by steve hebert',
+                credit: 'photo by Steve Hebert',
                 hotspots: [
                     {
                         id: 'h1-1', x: 40, y: 67,
@@ -122,7 +122,7 @@ function protestEssay() {
                 id: 6,
                 src: 'https://cdn.jsdelivr.net/gh/AnXh3L0/tyler-publication@main/images/materiality-posters.png',
                 alt: 'Stand Up KC workers raising silkscreened union posters overhead at a Labor Day strike, showing the durability and scale of hand-held protest materials',
-                credit: 'photo by suzanne corum-rich',
+                credit: 'photo by Suzanne Corum-Rich',
                 hotspots: [
                     {
                         id: 'h6-1', x: 17, y: 18,
@@ -168,7 +168,7 @@ function protestEssay() {
                 id: 8,
                 src: 'https://cdn.jsdelivr.net/gh/AnXh3L0/tyler-publication@main/images/multiple-signs-mo-motto.jpg',
                 alt: 'Rally with multiple coordinated Stand Up KC signs, each carrying a distinct but cohesive message, unified by a large overarching banner',
-                credit: 'photo by suzanne corum-rich',
+                credit: 'photo by Suzanne Corum-Rich',
                 hotspots: [
                     {
                         id: 'h8-1', x: 38, y: 61,
@@ -195,7 +195,7 @@ function protestEssay() {
                 id: 12,
                 src: 'https://cdn.jsdelivr.net/gh/AnXh3L0/tyler-publication@main/images/protest-shirts-combined.png',
                 alt: 'Stand Up KC t-shirts displaying the group name on the front and a core value message on the back, ensuring visibility from every direction',
-                credit: 'left: photo by steve hebert',
+                credit: 'left: photo by Steve Hebert',
                 hotspots: [
                     {
                         id: 'h12-1', x: 73, y: 48,
@@ -248,7 +248,7 @@ function protestEssay() {
                 id: 16,
                 src: 'https://cdn.jsdelivr.net/gh/AnXh3L0/tyler-publication@main/images/fast-food-strike-hebert-steve.png',
                 alt: 'Illustrated portraits of civil rights leaders on protest signs at a fast food strike, linking the current struggle to historically revered movements',
-                credit: 'photo by steve hebert',
+                credit: 'photo by Steve Hebert',
                 hotspots: [
                     {
                         id: 'h16-1', x: 65, y: 45,
